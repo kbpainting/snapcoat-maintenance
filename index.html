@@ -68,6 +68,15 @@
       background: rgba(37, 99, 235, 0.08); border: 1px solid rgba(99, 102, 241, 0.22);
       font-size: 14.5px; color: #cbd5e1; line-height: 1.6;
     }
+    .note strong {
+      font-weight: 700; white-space: nowrap;
+      background: linear-gradient(90deg, var(--b2), var(--b4)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .note-sub {
+      display: block; margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13.5px; color: var(--muted);
+    }
     .dots { margin-top: 26px; }
     .dots span {
       display: inline-block; width: 8px; height: 8px; margin: 0 4px; border-radius: 50%;
@@ -102,8 +111,10 @@
     <h1>We&rsquo;ll be right back</h1>
     <p>SnapCoat is temporarily offline while we make improvements.</p>
     <div class="note">
-      This maintenance may take up to an hour. We usually schedule downtime outside of
-      regular business hours to prevent interruption to your business and operations.
+      Maintenance may take up to an hour and can occur anytime within our maintenance window &mdash;
+      typically <strong>8:00&nbsp;PM&ndash;5:00&nbsp;AM&nbsp;EST</strong> &mdash; scheduled outside of regular
+      business hours to prevent interruption to your business and operations.
+      <span class="note-sub">Planned maintenance is usually announced in advance on the banner at the top of your SnapCoat dashboard.</span>
     </div>
     <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="divider"></div>
