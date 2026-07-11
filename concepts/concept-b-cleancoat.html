@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:390px; background:#FFFFFF; font-family:Inter,sans-serif; color:#0F172A; font-feature-settings:'tnum'; }
+
+  header { position:sticky; top:0; backdrop-filter:blur(12px); background:rgba(255,255,255,.85); border-bottom:1px solid #EEF1F5; padding:14px 20px; display:flex; justify-content:space-between; align-items:center; }
+  .title { font-family:'Schibsted Grotesk'; font-weight:700; font-size:17px; }
+  .avatar { width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,#2563EB,#7C3AED); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+
+  .money { padding:26px 20px 8px; }
+  .money .label { font-size:12px; font-weight:600; color:#64748B; letter-spacing:.02em; }
+  .money .big { font-family:'Schibsted Grotesk'; font-weight:900; font-size:44px; letter-spacing:-.03em; line-height:1; margin-top:6px; }
+  .money .delta { display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:12px; font-weight:600; color:#059669; background:#ECFDF5; padding:4px 10px; border-radius:99px; }
+
+  /* signature: roller-stroke coverage meter */
+  .coverage { margin:22px 20px 6px; }
+  .coverage .row { display:flex; justify-content:space-between; font-size:12px; margin-bottom:8px; }
+  .coverage .row b { font-weight:700; }
+  .coverage .row span { color:#64748B; }
+  .track { height:18px; border-radius:4px; background:repeating-linear-gradient(90deg,#F1F5F9 0 6px,#E9EEF5 6px 12px); position:relative; overflow:hidden; }
+  .stroke { position:absolute; inset:0; width:8%; background:linear-gradient(180deg,#3B82F6 0%,#2563EB 55%,#1D4ED8 100%); border-radius:4px 2px 2px 4px; }
+  .stroke:after { content:''; position:absolute; right:-6px; top:-2px; bottom:-2px; width:10px; background:#1D4ED8; border-radius:3px; transform:skewX(-8deg); opacity:.85; }
+  .coverage .hint { font-size:11px; color:#94A3B8; margin-top:7px; }
+
+  /* segmented stage control */
+  .segs { display:flex; gap:6px; padding:20px 20px 14px; overflow-x:auto; }
+  .seg { flex-shrink:0; border:1px solid #E2E8F0; border-radius:99px; padding:7px 13px; font-size:12px; font-weight:600; color:#475569; background:#fff; display:flex; gap:6px; align-items:center; }
+  .seg small { font-weight:700; color:#94A3B8; }
+  .seg.on { background:#0F172A; border-color:#0F172A; color:#fff; }
+  .seg.on small { color:#93C5FD; }
+
+  .cards { padding:0 20px; }
+  .card { border:1px solid #E2E8F0; border-radius:14px; padding:15px 16px; margin-bottom:11px; }
+  .card .top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .card h3 { font-family:'Schibsted Grotesk'; font-weight:700; font-size:16px; }
+  .card .addr { font-size:12px; color:#64748B; margin-top:2px; }
+  .card .amt { font-family:'Schibsted Grotesk'; font-weight:900; font-size:17px; }
+  .card .foot { display:flex; gap:8px; margin-top:12px; }
+  .tag { font-size:11px; font-weight:600; padding:4px 9px; border-radius:6px; background:#F1F5F9; color:#475569; }
+  .tag.hot { background:#FEF3C7; color:#B45309; }
+  .tag.go { background:#DBEAFE; color:#1D4ED8; }
+  .cta { margin-left:auto; font-size:12px; font-weight:700; color:#2563EB; align-self:center; }
+
+  .foot-note { text-align:center; font-size:9px; letter-spacing:.16em; color:#CBD5E1; text-transform:uppercase; margin:18px 0 26px; }
+</style></head><body>
+<header><div class="title">Sales Pipeline</div><div class="avatar">JQ</div></header>
+
+<div class="money">
+  <div class="label">Open pipeline</div>
+  <div class="big">$189,786</div>
+  <div class="delta">↑ 2 jobs sold this month</div>
+</div>
+
+<div class="coverage">
+  <div class="row"><b>Monthly goal coverage</b><span>$4,165 / $50,000</span></div>
+  <div class="track"><div class="stroke"></div></div>
+  <div class="hint">First coat is on — 8% covered, 20 days left in July.</div>
+</div>
+
+<div class="segs">
+  <div class="seg on">In-Draft <small>9</small></div>
+  <div class="seg">Sent <small>8</small></div>
+  <div class="seg">New <small>5</small></div>
+  <div class="seg">Booked <small>7</small></div>
+  <div class="seg">Won <small>2</small></div>
+</div>
+
+<div class="cards">
+  <div class="card">
+    <div class="top"><div><h3>Blakeney Residence</h3><div class="addr">Exterior repaint · Port St. Lucie</div></div><div class="amt">$12,400</div></div>
+    <div class="foot"><span class="tag hot">Ready to send</span><span class="tag">Drafted 2d ago</span><span class="cta">Open →</span></div>
+  </div>
+  <div class="card">
+    <div class="top"><div><h3>Drury Commons</h3><div class="addr">HOA · Phase 1 of 3</div></div><div class="amt">$3,240</div></div>
+    <div class="foot"><span class="tag go">Estimate walked</span><span class="cta">Open →</span></div>
+  </div>
+  <div class="card">
+    <div class="top"><div><h3>Mitchell Interior</h3><div class="addr">3BR interior · cabinets</div></div><div class="amt">$8,950</div></div>
+    <div class="foot"><span class="tag">Drafted today</span><span class="cta">Open →</span></div>
+  </div>
+</div>
+
+<div class="foot-note">Concept B · “Clean Coat”</div>
+</body></html>
