@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposal Builder — UX Audit &amp; Redesign Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #0C1117; --panel: #151B24; --line: #223044; --tint: #10161E;
+    --text: #E8EDF4; --muted: #93A1B5; --accent: #3E9DF3;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--text); font-family: 'DM Sans', -apple-system, sans-serif; line-height: 1.55; padding: 20px 16px 80px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em; }
+  h1 { font-size: 26px; margin: 8px 0 4px; }
+  h2 { font-size: 19px; margin: 40px 0 12px; padding-top: 20px; border-top: 1px solid var(--line); }
+  h3 { font-size: 15px; margin: 20px 0 6px; color: var(--accent); }
+  p { margin: 8px 0; color: var(--muted); font-size: 15px; }
+  p strong, li strong { color: var(--text); }
+  .kicker { font-family: ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; }
+  .sub { color: var(--muted); font-size: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin: 14px 0; }
+  .verdict { border-left: 3px solid var(--accent); }
+  ul, ol { margin: 8px 0 8px 20px; color: var(--muted); font-size: 15px; }
+  li { margin: 6px 0; }
+  img { width: 100%; border-radius: 10px; border: 1px solid var(--line); display: block; }
+  .shots { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; align-items: start; margin: 12px 0; }
+  @media (max-width: 560px) { .shots { grid-template-columns: 1fr; } }
+  .cap { font-size: 12px; color: var(--muted); margin-top: 6px; font-family: ui-monospace, Menlo, monospace; }
+  .tag { display: inline-block; font-family: ui-monospace, Menlo, monospace; font-size: 11px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); margin-right: 6px; }
+  .tag.bug { color: var(--bad); border-color: rgb(248 113 113 / .35); }
+  .tag.quick { color: var(--good); border-color: rgb(52 211 153 / .35); }
+  .tag.struct { color: var(--warn); border-color: rgb(251 191 36 / .35); }
+  .phase { border: 1px solid var(--line); border-radius: 14px; margin: 14px 0; overflow: hidden; }
+  .phase-head { padding: 12px 16px; background: var(--tint); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; }
+  .phase-head h3 { margin: 0; color: var(--text); }
+  .phase-body { padding: 12px 16px; }
+  .risk { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--muted); }
+  .num { font-family: ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums; }
+  .findings li { margin: 10px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Jarvis · Jul 13, 2026</div>
+  <h1>Proposal Builder — UX Audit &amp; Redesign Plan</h1>
+  <p class="sub">Full pass through all 6 steps on desktop (1440px) and mobile (430px) with a real 26-room / 122-surface proposal, plus a line-by-line read of the 14,800-line builder code. Nothing has been changed — this is the findings + recommendations for your approval.</p>
+
+  <div class="card verdict">
+    <p><strong>The short version:</strong> the builder's bones are good — the 6-step flow, the live cart, the data all being there. But it's still wearing the old heavy purple-gradient skin from before the weekend redesign, navigation is strictly linear (the step bubbles aren't tappable), and the Rooms &amp; Surfaces step buckles on big jobs — 26 rooms means endless scrolling with no way to jump around, plus a real layout bug where badges overlap prices and action buttons clip off-screen. My recommendation is a 3-phase "Fresh Coat: Builder Edition" — same data, same pricing logic (untouched, it's protected), dramatically better navigation and readability on both screens.</p>
+  </div>
+
+  <h2>What it looks like today</h2>
+
+  <h3>Step 4 — Rooms &amp; Surfaces (the workhorse)</h3>
+  <div class="shots">
+    <div><img src="pb-d-rooms.png" alt="Rooms step desktop"><div class="cap">Desktop: "5 surf" badge collides with the price, room names truncate at 1440px, delete button clips off the right edge.</div></div>
+    <div><img src="pb-m-rooms.png" alt="Rooms step mobile"><div class="cap">Mobile: each room ≈ a full screen-height card. 26 rooms = a very long thumb workout, no jump list.</div></div>
+  </div>
+  <p>Inside each room the surfaces render as a <strong>10-column table</strong> (Surface, Coats, Qty, Paint, Gal, Labor Hrs, Labor, Material, Total, Actions). On mobile 7 of those columns hide and the data gets crushed into a 10px two-line cell ("3c · 120 sf · 2.4 gal"). Editing one surface can touch three different dialogs (surface editor, quantity dialog, labor-hours dialog).</p>
+
+  <h3>Step 5 — Summary</h3>
+  <div class="shots">
+    <div><img src="pb-d-summary.png" alt="Summary desktop"><div class="cap">Desktop: 6-column stat strip + package analysis table. Solid data, dated chrome.</div></div>
+    <div><img src="pb-m-summary.png" alt="Summary mobile"><div class="cap">Mobile: the package table gets clipped mid-row; stat grid squeezes to 2 columns.</div></div>
+  </div>
+
+  <h3>Step 6 — Preview &amp; Send</h3>
+  <div class="shots">
+    <div><img src="pb-d-send.png" alt="Send desktop"><div class="cap">Desktop: photo warning, deposit override, then a full duplicate of the step-4 scope-of-work stacked in collapsibles.</div></div>
+    <div><img src="pb-m-send.png" alt="Send mobile"><div class="cap">Mobile: same stack, very long. The primary "Send" action shares a crowded bar with the cart.</div></div>
+  </div>
+
+  <h3>The header/footer chrome</h3>
+  <div class="shots">
+    <div><img src="pb-d-step1.png" alt="Step 1 desktop"><div class="cap">The blue→purple→pink gradient hero band + gradient footer — the exact style we retired everywhere else last weekend.</div></div>
+    <div><img src="ref-leadmanager.png" alt="Lead Manager reference"><div class="cap">The target language: quiet panels, stat tiles, mono numerals, gradient reserved for small accents (weekend redesign).</div></div>
+  </div>
+
+  <h2>Findings (ranked)</h2>
+  <ul class="findings">
+    <li><span class="tag bug">bug</span><strong>Room-row layout collision:</strong> the surface-count badge overlaps the price text and the delete action clips off the right edge on desktop collapsed rows. Visible in the screenshot above with real data.</li>
+    <li><span class="tag quick">quick win</span><strong>Step indicator is decorative only:</strong> the step bubbles are hard-coded non-clickable (<span class="num">pointer-events-none</span>). To fix a room from the summary you have to hammer Previous. Completed steps should be tappable.</li>
+    <li><span class="tag struct">structural</span><strong>Triple-nested scrolling on step 4:</strong> page scroller → room accordion → horizontally scrolling table with its own sticky header. Disorienting on mobile, fights the outer scroll.</li>
+    <li><span class="tag struct">structural</span><strong>10-column table on a phone:</strong> most columns hide on mobile and the leftovers render at 10px. It's a table pretending to be a card; it should just be a card.</li>
+    <li><span class="tag struct">structural</span><strong>No way to navigate big proposals:</strong> 26 rooms is pure scroll — no room index, no collapse-all, no search/jump.</li>
+    <li><span class="tag struct">structural</span><strong>3 dialogs to edit 1 surface:</strong> surface editor, quantity dialog, and labor-hours dialog are separate modals doing one job.</li>
+    <li><span class="tag struct">structural</span><strong>Step 6 duplicates the entire step-4 scope-of-work</strong> inside collapsibles — a second copy of the same room/photo data making the send page enormous.</li>
+    <li><span class="tag quick">quick win</span><strong>Old theme, hardcoded ~8×:</strong> the 5-stop gradient literal is copy-pasted throughout (step nodes, header, footer, buttons) with no token — and it's the pre-weekend look. Also inconsistent button styles and hand-rolled overlays instead of the shared dialog.</li>
+    <li><span class="tag quick">quick win</span><strong>Cart vs. Next button crowding:</strong> the live cart expands upward over content and shares the footer with the primary CTA; on mobile they compete for the same space.</li>
+    <li><span class="tag quick">quick win</span><strong>Dev logging left in the cart's hot render path</strong> (fires on every price recalc).</li>
+  </ul>
+
+  <h2>Recommendation — "Fresh Coat: Builder Edition"</h2>
+  <p>Extend the weekend design system into the builder: warm-paper light / job-board dark surfaces, Space Grotesk display headers, mono tabular numerals for money, and the brand gradient demoted from wall-to-wall paint to small accents (active step, progress bar, primary CTA) — same as the nav pills. All pricing math stays byte-for-byte untouched; every dollar figure renders read-only from the same calculations.</p>
+
+  <div class="phase">
+    <div class="phase-head"><h3>Phase 1 — Reskin + navigation quick wins</h3><span class="risk">low risk · no logic</span></div>
+    <div class="phase-body"><ul>
+      <li>Retire the gradient hero band → slim one-row header (back · title · draft badge · step chips), Fresh Coat panels throughout, tokenize the gradient (one variable, not 8 copies).</li>
+      <li><strong>Clickable step indicator</strong> — completed steps jump directly, validation still guards forward jumps.</li>
+      <li>Fix the room-row collision bug + clipped actions.</li>
+      <li>Footer cleanup: total + Next stay primary; cart breakdown opens as a proper bottom sheet instead of expanding over content. Remove dev logging.</li>
+    </ul></div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head"><h3>Phase 2 — Rooms &amp; Surfaces overhaul</h3><span class="risk">medium · display only</span></div>
+    <div class="phase-body"><ul>
+      <li><strong>Room navigator:</strong> sticky compact room index (chips w/ price) + collapse/expand all — 26 rooms becomes two taps, not two minutes of scrolling.</li>
+      <li><strong>Mobile: surface cards</strong> (name, chips for coats/qty/gallons, price right-aligned in mono) replacing the crushed table; tap opens the editor.</li>
+      <li><strong>Desktop: cleaner responsive table</strong> with column priorities and one scroller — kills the triple-nested scrolling.</li>
+      <li><strong>One surface editor</strong> — fold quantity + labor-hours into the surface dialog as sections instead of 3 separate modals.</li>
+    </ul></div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head"><h3>Phase 3 — Summary + Send restructure</h3><span class="risk">medium · display only</span></div>
+    <div class="phase-body"><ul>
+      <li>Summary: Fresh Coat stat tiles (like Lead Manager) + package analysis as tappable paint-chip cards on mobile instead of a clipped table.</li>
+      <li>Send: replace the duplicated scope-of-work with a <strong>pre-flight checklist</strong> (Photos ✓ · Deposit · Signature method · Recipient) + a "review scope" link that jumps back to step 4 — the send page becomes one screen.</li>
+    </ul></div>
+  </div>
+
+  <div class="card">
+    <p><strong>Protected areas, explicitly:</strong> zero changes to pricing/totals/markup/labor/material calculations, deposit math, or the customer-facing proposal document and its email sending. This is chrome, layout, and navigation only. Each phase ships to DEV separately with before/after screenshots for your sign-off.</p>
+  </div>
+</div>
+</body>
+</html>
