@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposal Builder Redesign — Step-by-Step Renders</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#0C1117; --panel:#151B24; --line:#223044; --tint:#10161E; --text:#E8EDF4; --muted:#93A1B5; --accent:#3E9DF3; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--text); font-family: 'DM Sans', -apple-system, sans-serif; padding: 24px 16px 80px; }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  .kicker { font-family: ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: .14em; color: var(--accent); text-transform: uppercase; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: 26px; margin: 6px 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 14px; max-width: 640px; }
+  h2 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; margin: 0 0 2px; }
+  .step { margin-top: 44px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .step-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .step-num { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--accent); }
+  .step p { color: var(--muted); font-size: 13.5px; max-width: 640px; margin: 6px 0 14px; }
+  .open { font-size: 12px; color: var(--accent); text-decoration: none; border: 1px solid var(--line); padding: 4px 12px; border-radius: 99px; }
+  .frames { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 900px) { .frames { grid-template-columns: 5fr 2fr; align-items: start; } }
+  .frame-card { background: var(--tint); border: 1px solid var(--line); border-radius: 16px; padding: 12px; overflow: hidden; }
+  .frame-label { font-family: ui-monospace, Menlo, monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .viewport { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); background: #000; }
+  .viewport iframe { border: 0; transform-origin: 0 0; position: absolute; top: 0; left: 0; background: var(--paper); pointer-events: none; }
+  /* Desktop preview: 1280px frame scaled to container via fixed steps */
+  .vp-desktop { width: 100%; }
+  .vp-desktop iframe { width: 1280px; height: 860px; }
+  /* Mobile preview: 400px frame */
+  .vp-mobile { max-width: 340px; margin: 0 auto; }
+  .vp-mobile iframe { width: 400px; height: 860px; }
+  /* scale steps — phone */
+  @media (max-width: 899px) {
+    .vp-desktop { height: calc(860px * 0.28); } .vp-desktop iframe { transform: scale(0.28); }
+    .vp-desktop { --w: 1; }
+  }
+  @media (max-width: 899px) { .vp-desktop { height: 241px; } }
+  @media (max-width: 899px) { .vp-desktop iframe { transform: scale(0.28); } }
+  @media (min-width: 900px) {
+    .vp-desktop { height: calc(860px * 0.55); } .vp-desktop iframe { transform: scale(0.55); }
+  }
+  .vp-mobile { height: calc(860px * 0.80); } .vp-mobile iframe { transform: scale(0.80); }
+  .note { margin-top: 40px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; color: var(--muted); font-size: 13.5px; }
+  .note strong { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Jarvis · Renders for approval</div>
+  <h1>Proposal Builder — "Fresh Coat: Builder Edition"</h1>
+  <p class="sub">Step-by-step renders of the proposed redesign. Every screen below is a live HTML mockup — tap "Open full size" to poke at any of them in your browser. Same data, same pricing, new chrome and navigation.</p>
+
+  <div class="step" id="s1">
+    <div class="step-head"><span class="step-num">STEP 1/6</span><h2>Customer</h2><a class="open" href="step-1-customer.html">Open full size ↗</a></div>
+    <p>Slim header replaces the gradient hero. Step chips up top are now tappable. Customer + commission as calm cards.</p>
+    <div class="frames">
+      <div class="frame-card"><div class="frame-label">Desktop</div><div class="viewport vp-desktop"><iframe src="step-1-customer.html" loading="lazy" scrolling="no"></iframe></div></div>
+      <div class="frame-card"><div class="frame-label">Mobile</div><div class="viewport vp-mobile"><iframe src="step-1-customer.html" loading="lazy" scrolling="no"></iframe></div></div>
+    </div>
+  </div>
+
+  <div class="step" id="s2">
+    <div class="step-head"><span class="step-num">STEP 2/6</span><h2>Project Type</h2><a class="open" href="step-2-project.html">Open full size ↗</a></div>
+    <p>Type cards with clear selected state; flat-rate flow flagged on Cabinets.</p>
+    <div class="frames">
+      <div class="frame-card"><div class="frame-label">Desktop</div><div class="viewport vp-desktop"><iframe src="step-2-project.html" loading="lazy" scrolling="no"></iframe></div></div>
+      <div class="frame-card"><div class="frame-label">Mobile</div><div class="viewport vp-mobile"><iframe src="step-2-project.html" loading="lazy" scrolling="no"></iframe></div></div>
+    </div>
+  </div>
+
+  <div class="step" id="s3">
+    <div class="step-head"><span class="step-num">STEP 3/6</span><h2>Template</h2><a class="open" href="step-3-template.html">Open full size ↗</a></div>
+    <p>Optional step reads as optional — skip affordance up top, paint-band template cards.</p>
+    <div class="frames">
+      <div class="frame-card"><div class="frame-label">Desktop</div><div class="viewport vp-desktop"><iframe src="step-3-template.html" loading="lazy" scrolling="no"></iframe></div></div>
+      <div class="frame-card"><div class="frame-label">Mobile</div><div class="viewport vp-mobile"><iframe src="step-3-template.html" loading="lazy" scrolling="no"></iframe></div></div>
+    </div>
+  </div>
+
+  <div class="step" id="s4">
+    <div class="step-head"><span class="step-num">STEP 4/6</span><h2>Rooms &amp; Surfaces — the big one</h2><a class="open" href="step-4-rooms.html">Open full size ↗</a></div>
+    <p>Sticky room navigator (jump to any room in one tap, even with 26), fixed room rows (no more overlapping badges/clipped buttons), and surfaces that render as a clean 6-column table on desktop but proper cards on mobile — no more 10 columns at 10px.</p>
+    <div class="frames">
+      <div class="frame-card"><div class="frame-label">Desktop</div><div class="viewport vp-desktop"><iframe src="step-4-rooms.html" loading="lazy" scrolling="no"></iframe></div></div>
+      <div class="frame-card"><div class="frame-label">Mobile</div><div class="viewport vp-mobile"><iframe src="step-4-rooms.html" loading="lazy" scrolling="no"></iframe></div></div>
+    </div>
+  </div>
+
+  <div class="step" id="s5">
+    <div class="step-head"><span class="step-num">STEP 5/6</span><h2>Summary</h2><a class="open" href="step-5-summary.html">Open full size ↗</a></div>
+    <p>Stat tiles like Lead Manager, packages as paint-chip cards instead of a table that clips on mobile.</p>
+    <div class="frames">
+      <div class="frame-card"><div class="frame-label">Desktop</div><div class="viewport vp-desktop"><iframe src="step-5-summary.html" loading="lazy" scrolling="no"></iframe></div></div>
+      <div class="frame-card"><div class="frame-label">Mobile</div><div class="viewport vp-mobile"><iframe src="step-5-summary.html" loading="lazy" scrolling="no"></iframe></div></div>
+    </div>
+  </div>
+
+  <div class="step" id="s6">
+    <div class="step-head"><span class="step-num">STEP 6/6</span><h2>Preview &amp; Send</h2><a class="open" href="step-6-send.html">Open full size ↗</a></div>
+    <p>The mile-long duplicate scope-of-work becomes a one-screen pre-flight checklist: photos, handoff notes, deposit, recipient, signature method — all green, then send.</p>
+    <div class="frames">
+      <div class="frame-card"><div class="frame-label">Desktop</div><div class="viewport vp-desktop"><iframe src="step-6-send.html" loading="lazy" scrolling="no"></iframe></div></div>
+      <div class="frame-card"><div class="frame-label">Mobile</div><div class="viewport vp-mobile"><iframe src="step-6-send.html" loading="lazy" scrolling="no"></iframe></div></div>
+    </div>
+  </div>
+
+  <div class="note"><strong>Notes:</strong> renders are dark mode (what you and the team run). Light mode ships with the same tokens on the warm-paper palette from the pipeline redesign. The previews above are non-interactive thumbnails — use "Open full size" to scroll a render. Pricing math, deposit logic, and the customer-facing document are untouched by all of this.</div>
+</div>
+</body>
+</html>
