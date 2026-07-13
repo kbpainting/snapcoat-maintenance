@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Proposal Builder — Customer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0C1117; --panel:#151B24; --line:#223044; --tint:#10161E;
+    --text:#E8EDF4; --muted:#93A1B5; --accent:#3E9DF3;
+    --good:#34d399; --warn:#fbbf24; --bad:#f87171;
+    --grad: linear-gradient(135deg,#2563EB 0%,#7C3AED 55%,#EC4899 100%);
+  }
+  *{box-sizing:border-box;}
+  html,body{max-width:100%; overflow-x:hidden;}
+  body{
+    background:var(--paper); color:var(--text);
+    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    margin:0;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  .display, h1, h2, h3, .sg{ font-family:'Space Grotesk', sans-serif; }
+  .mono{ font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  /* ---------- HEADER ---------- */
+  header.top{
+    position:sticky; top:0; z-index:50;
+    background:rgba(21,27,36,.92);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .row1{
+    height:52px; padding:0 16px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .backbtn{
+    width:32px; height:32px; flex:0 0 auto;
+    border:1px solid var(--line); border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:16px; background:transparent;
+    cursor:pointer;
+  }
+  .titleblock{ line-height:1.25; min-width:0; }
+  .titleblock .t1{ font-size:15px; font-weight:700; }
+  .titleblock .t2{ font-size:11px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .spacer{ flex:1 1 auto; }
+  .draftbadge{
+    display:flex; align-items:center; gap:6px;
+    font-size:11px; color:var(--muted); white-space:nowrap; flex:0 0 auto;
+  }
+  .dot{ width:6px; height:6px; border-radius:50%; background:var(--good); flex:0 0 auto; }
+
+  .row2{
+    padding:6px 12px 10px;
+    display:flex; gap:6px; overflow-x:auto;
+    scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .row2::-webkit-scrollbar{ display:none; }
+  .chip{
+    border-radius:99px; padding:5px 12px; font-size:12px; font-weight:500;
+    white-space:nowrap; cursor:pointer; flex:0 0 auto;
+    display:flex; align-items:center; gap:6px;
+  }
+  .chip.completed{ border:1px solid var(--line); background:var(--tint); color:var(--muted); }
+  .chip.completed .lead{ color:var(--good); }
+  .chip.active{ background:var(--grad); color:#fff; font-weight:700; }
+  .chip.active .num{
+    width:16px; height:16px; border-radius:50%;
+    background:rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; flex:0 0 auto;
+  }
+  .chip.upcoming{ border:1px solid var(--line); color:var(--muted); }
+  .chip.upcoming .num{
+    width:16px; height:16px; border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; flex:0 0 auto; color:var(--muted);
+  }
+
+  .progress-track{ height:3px; width:100%; background:var(--tint); }
+  .progress-fill{ height:100%; background:var(--grad); width:16.6667%; }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1 1 auto; }
+  .content{
+    max-width:640px; margin:0 auto;
+    padding:20px 16px 32px;
+  }
+  .sec-heading{ font-size:20px; font-weight:700; margin:0 0 6px; }
+  .sec-sub{ font-size:13px; color:var(--muted); margin:0 0 20px; line-height:1.5; }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:16px; margin-bottom:16px;
+  }
+
+  /* customer card */
+  .cust-top{ display:flex; align-items:flex-start; gap:12px; }
+  .avatar{
+    width:44px; height:44px; border-radius:50%; flex:0 0 auto;
+    background:var(--tint); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:15px;
+    color:var(--text);
+  }
+  .cust-info{ min-width:0; flex:1 1 auto; }
+  .cust-name-row{ display:flex; align-items:center; gap:6px; }
+  .cust-name{ font-size:16px; font-weight:700; }
+  .verified{
+    width:15px; height:15px; border-radius:50%;
+    background:rgba(52,211,153,.15); color:var(--good);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; flex:0 0 auto;
+  }
+  .cust-detail{
+    font-size:13px; color:var(--muted); margin-top:8px; line-height:1.7;
+    display:flex; flex-wrap:wrap; align-items:center; gap:4px 8px;
+  }
+  .cust-detail .sep{ color:var(--line); }
+  .ghostbtn{
+    padding:7px 14px; border-radius:10px; border:1px solid var(--line);
+    background:transparent; color:var(--text); font-size:12px; font-weight:500;
+    cursor:pointer; flex:0 0 auto; white-space:nowrap;
+  }
+  .cust-actions{ margin-left:auto; flex:0 0 auto; }
+
+  @media (max-width:420px){
+    .cust-top{ flex-wrap:wrap; }
+    .cust-actions{ margin-left:0; margin-top:12px; width:100%; }
+    .cust-actions .ghostbtn{ width:100%; text-align:center; }
+  }
+
+  /* commission card */
+  .card-head{
+    display:flex; align-items:center; gap:8px; margin-bottom:12px;
+  }
+  .card-title{ font-size:14px; font-weight:700; }
+  .infodot{
+    width:15px; height:15px; border-radius:50%;
+    border:1px solid var(--line); color:var(--muted);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-style:italic; font-family:'Space Grotesk', sans-serif;
+  }
+  .fakeselect{
+    display:flex; align-items:center; justify-content:space-between;
+    border:1px solid var(--line); background:var(--tint);
+    border-radius:12px; padding:12px 14px; cursor:pointer;
+  }
+  .fakeselect-left{ display:flex; align-items:center; gap:10px; min-width:0; }
+  .rep-avatar{
+    width:28px; height:28px; border-radius:50%; flex:0 0 auto;
+    background:var(--panel); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:11px;
+  }
+  .fakeselect-text{ font-size:14px; font-weight:500; }
+  .fakeselect-text .sub{ display:block; font-size:11px; color:var(--muted); font-weight:400; margin-top:1px; }
+  .chevron{ color:var(--muted); font-size:14px; flex:0 0 auto; }
+
+  .add-split{
+    width:100%; margin-top:10px;
+    padding:11px 14px; border-radius:12px;
+    border:1px dashed var(--line); background:transparent;
+    color:var(--muted); font-size:13px; font-weight:500;
+    cursor:pointer; text-align:center;
+  }
+  .commission-note{ font-size:11px; color:var(--muted); margin:10px 2px 0; }
+
+  /* tip strip */
+  .tip{
+    background:var(--tint); border:1px solid var(--line);
+    border-radius:12px; padding:12px 14px;
+    font-size:12px; color:var(--muted); line-height:1.6;
+    display:flex; gap:8px; align-items:flex-start;
+  }
+  .tip .icon{ flex:0 0 auto; opacity:.8; }
+
+  /* ---------- FOOTER ---------- */
+  footer.bottom{
+    position:sticky; bottom:0; z-index:50;
+    background:rgba(21,27,36,.95);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    padding:10px 16px;
+    display:flex; align-items:center; gap:12px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  }
+  .totalblock{ cursor:pointer; line-height:1.2; flex:0 0 auto; }
+  .totalblock .label{
+    font-size:10px; letter-spacing:.12em; color:var(--muted); display:flex; align-items:center; gap:4px;
+  }
+  .totalblock .amount{ font-size:20px; font-weight:700; color:var(--text); }
+  .totalblock .sub{ font-size:10px; color:var(--muted); }
+  .footer-spacer{ flex:1 1 auto; }
+  .footer-meta{ font-size:12px; color:var(--muted); display:none; white-space:nowrap; }
+  @media (min-width:768px){ .footer-meta{ display:block; } }
+  .backbtn2{
+    padding:10px 18px; border-radius:12px; border:1px solid var(--line);
+    color:var(--muted); background:transparent; font-size:13px; font-weight:500;
+    cursor:pointer; flex:0 0 auto;
+  }
+  .cta{
+    padding:10px 22px; border-radius:12px; background:var(--grad);
+    color:#fff; font-weight:700; font-size:13px; border:none;
+    cursor:pointer; flex:0 0 auto; white-space:nowrap;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="row1">
+    <button class="backbtn" aria-label="Back">‹</button>
+    <div class="titleblock">
+      <div class="t1 sg">Proposal Builder</div>
+      <div class="t2">Katherine Moore · Draft</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="draftbadge"><span class="dot"></span>Saved</div>
+  </div>
+  <div class="row2">
+    <div class="chip active"><span class="num">1</span>Customer</div>
+    <div class="chip upcoming"><span class="num">2</span>Project</div>
+    <div class="chip upcoming"><span class="num">3</span>Template</div>
+    <div class="chip upcoming"><span class="num">4</span>Rooms</div>
+    <div class="chip upcoming"><span class="num">5</span>Summary</div>
+    <div class="chip upcoming"><span class="num">6</span>Send</div>
+  </div>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+</header>
+
+<main>
+  <div class="content">
+    <h1 class="sec-heading sg">Who's this proposal for?</h1>
+    <p class="sec-sub">Pick the customer and who gets credit for the sale.</p>
+
+    <!-- Card 1: selected customer -->
+    <div class="card">
+      <div class="cust-top">
+        <div class="avatar">KM</div>
+        <div class="cust-info">
+          <div class="cust-name-row">
+            <span class="cust-name sg">Katherine Moore</span>
+            <span class="verified" title="Verified">✓</span>
+          </div>
+          <div class="cust-detail">
+            <span>km.moore@email.com</span><span class="sep">·</span>
+            <span>(561) 555-0184</span><span class="sep">·</span>
+            <span>4820 Juniper Ln, Port St. Lucie, FL 34986</span>
+          </div>
+        </div>
+        <div class="cust-actions">
+          <button class="ghostbtn">Change</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: commission -->
+    <div class="card">
+      <div class="card-head">
+        <span class="card-title sg">Commission</span>
+        <span class="infodot">i</span>
+      </div>
+      <div class="fakeselect">
+        <div class="fakeselect-left">
+          <div class="rep-avatar">JA</div>
+          <div class="fakeselect-text">
+            Javier Alanis — Primary
+            <span class="sub">100% commission split</span>
+          </div>
+        </div>
+        <span class="chevron">⌄</span>
+      </div>
+      <button class="add-split">+ Add split salesperson</button>
+      <div class="commission-note">Defaults to you</div>
+    </div>
+
+    <!-- Tip strip -->
+    <div class="tip">
+      <span class="icon">💡</span>
+      <span>Tip: tap any completed step chip up top to jump back — no more hammering Back.</span>
+    </div>
+  </div>
+</main>
+
+<footer class="bottom">
+  <div class="totalblock">
+    <div class="label mono">PROJECT TOTAL ⌃</div>
+    <div class="amount mono">$138,420.03</div>
+    <div class="sub">with 7% tax</div>
+  </div>
+  <div class="footer-spacer"></div>
+  <div class="footer-meta mono">26 rooms · 122 surfaces · 1,385.5h labor</div>
+  <button class="backbtn2">Back</button>
+  <button class="cta">Next →</button>
+</footer>
+
+</body>
+</html>
