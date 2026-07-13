@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proposal Builder — Project Type</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0C1117; --panel:#151B24; --line:#223044; --tint:#10161E;
+    --text:#E8EDF4; --muted:#93A1B5; --accent:#3E9DF3;
+    --good:#34d399; --warn:#fbbf24; --bad:#f87171;
+    --grad: linear-gradient(135deg,#2563EB 0%,#7C3AED 55%,#EC4899 100%);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper); color:var(--text);
+    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  .display{ font-family:'Space Grotesk',sans-serif; }
+  .mono{ font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  /* ---------- HEADER ---------- */
+  header.app-header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(21,27,36,.92);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-row1{
+    height:52px; padding:0 16px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .back-btn{
+    flex:0 0 auto;
+    width:32px; height:32px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:transparent;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+    font-size:18px;
+    cursor:pointer;
+    line-height:1;
+  }
+  .title-block{ min-width:0; }
+  .title-block .t1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px; font-weight:700;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .title-block .t2{
+    font-size:11px; color:var(--muted); margin-top:1px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .header-spacer{ flex:1 1 auto; }
+  .draft-badge{
+    flex:0 0 auto;
+    display:flex; align-items:center; gap:6px;
+    font-size:11px; color:var(--muted);
+    white-space:nowrap;
+  }
+  .draft-dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--good);
+  }
+
+  .header-row2{
+    padding:6px 12px 10px;
+    display:flex; gap:6px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  .header-row2::-webkit-scrollbar{ display:none; }
+  .chip{
+    flex:0 0 auto;
+    border-radius:99px;
+    padding:5px 12px;
+    font-size:12px; font-weight:500;
+    white-space:nowrap;
+    cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    user-select:none;
+  }
+  .chip.completed{
+    border:1px solid var(--line);
+    background:var(--tint);
+    color:var(--muted);
+  }
+  .chip.completed .lead{ color:var(--good); font-weight:700; }
+  .chip.active{
+    background:var(--grad);
+    color:#fff;
+    font-weight:700;
+    border:1px solid transparent;
+  }
+  .chip.active .lead{
+    width:16px; height:16px; border-radius:50%;
+    background:rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700;
+    flex:0 0 auto;
+  }
+  .chip.upcoming{
+    border:1px solid var(--line);
+    color:var(--muted);
+  }
+  .chip.upcoming .lead{
+    width:16px; height:16px; border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:500;
+    flex:0 0 auto;
+  }
+
+  .progress-track{
+    height:3px; width:100%;
+    background:var(--tint);
+    position:relative;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--grad);
+    width:33.3333%;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{
+    flex:1 1 auto;
+    width:100%;
+    max-width:1080px;
+    margin:0 auto;
+    padding:24px 16px 32px;
+  }
+  .page-head{ margin-bottom:20px; }
+  .page-head h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:20px; font-weight:700;
+    margin:0 0 6px;
+  }
+  .page-head p{
+    font-size:13px; color:var(--muted);
+    margin:0;
+  }
+
+  .type-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+  @media (min-width:560px){
+    .type-grid{ grid-template-columns:repeat(3,1fr); }
+  }
+
+  .type-card{
+    position:relative;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 14px;
+    cursor:pointer;
+    display:flex; flex-direction:column; gap:10px;
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  .type-card:hover{
+    border-color:#2c3d56;
+    transform:translateY(-1px);
+  }
+  .type-card.selected{
+    border:1.5px solid var(--accent);
+    box-shadow:0 0 0 3px rgb(62 157 243 / .15);
+  }
+  .type-card .check{
+    position:absolute;
+    top:10px; right:10px;
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700;
+    line-height:1;
+  }
+  .icon-wrap{
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--tint);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted);
+  }
+  .type-card.selected .icon-wrap{
+    background:rgba(62,157,243,.12);
+    border-color:rgba(62,157,243,.4);
+    color:var(--accent);
+  }
+  .icon-wrap svg{ width:20px; height:20px; }
+  .type-label{
+    font-size:14px; font-weight:700;
+    color:var(--text);
+  }
+  .type-sub{
+    font-size:11px; color:var(--muted);
+    line-height:1.4;
+    margin-top:-6px;
+  }
+  .flat-rate-pill{
+    align-self:flex-start;
+    font-size:10px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:2px 7px;
+    color:var(--muted);
+    margin-top:-2px;
+  }
+
+  .info-strip{
+    margin-top:20px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--tint);
+    font-size:12px;
+    color:var(--muted);
+    display:flex; align-items:center; gap:8px;
+  }
+  .info-strip .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--good);
+    flex:0 0 auto;
+  }
+  .info-strip b{ color:var(--text); font-weight:700; }
+
+  /* ---------- FOOTER ---------- */
+  footer.app-footer{
+    position:sticky; bottom:0; z-index:50;
+    background:rgba(21,27,36,.95);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    padding:10px 16px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom));
+    display:flex; align-items:center; gap:12px;
+  }
+  .total-block{
+    cursor:pointer;
+    display:flex; flex-direction:column;
+    line-height:1.2;
+  }
+  .total-block .lbl{
+    font-size:10px; letter-spacing:.12em; color:var(--muted);
+    display:flex; align-items:center; gap:4px;
+  }
+  .total-block .amt{
+    font-size:20px; font-weight:700; color:var(--text);
+  }
+  .total-block .sub{
+    font-size:10px; color:var(--muted);
+  }
+  .footer-spacer{ flex:1 1 auto; }
+  .footer-meta{
+    display:none;
+    font-size:12px; color:var(--muted);
+  }
+  @media (min-width:768px){
+    .footer-meta{ display:block; }
+  }
+  .btn{
+    flex:0 0 auto;
+    padding:10px 18px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    background:transparent;
+    font-size:13px; font-weight:500;
+    cursor:pointer;
+    font-family:'DM Sans',sans-serif;
+  }
+  .btn-primary{
+    padding:10px 22px;
+    border-radius:12px;
+    background:var(--grad);
+    color:#fff;
+    font-weight:700;
+    border:none;
+    font-size:13px;
+    cursor:pointer;
+    font-family:'DM Sans',sans-serif;
+    white-space:nowrap;
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-row1">
+    <button class="back-btn" aria-label="Back">‹</button>
+    <div class="title-block">
+      <div class="t1 display">Proposal Builder</div>
+      <div class="t2">Katherine Moore · Draft</div>
+    </div>
+    <div class="header-spacer"></div>
+    <div class="draft-badge"><span class="draft-dot"></span>Saved</div>
+  </div>
+  <div class="header-row2">
+    <div class="chip completed"><span class="lead">✓</span>Customer</div>
+    <div class="chip active"><span class="lead">2</span>Project</div>
+    <div class="chip upcoming"><span class="lead">3</span>Template</div>
+    <div class="chip upcoming"><span class="lead">4</span>Rooms</div>
+    <div class="chip upcoming"><span class="lead">5</span>Summary</div>
+    <div class="chip upcoming"><span class="lead">6</span>Send</div>
+  </div>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+</header>
+
+<main>
+  <div class="page-head">
+    <h1 class="display">What kind of job is it?</h1>
+    <p>This drives rates and templates.</p>
+  </div>
+
+  <div class="type-grid">
+
+    <!-- Interior Painting - selected -->
+    <div class="type-card selected">
+      <div class="check">✓</div>
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20V9l8-5 8 5v11"/>
+          <path d="M9 20v-7h6v7"/>
+        </svg>
+      </div>
+      <div class="type-label">Interior Painting</div>
+      <div class="type-sub">Rooms, walls, ceilings, trim</div>
+    </div>
+
+    <!-- Exterior Painting -->
+    <div class="type-card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 20h18"/>
+          <path d="M5 20V10l7-6 7 6v10"/>
+          <path d="M10 20v-5h4v5"/>
+          <path d="M5 10h14"/>
+        </svg>
+      </div>
+      <div class="type-label">Exterior Painting</div>
+      <div class="type-sub">Siding, trim, doors, elevations</div>
+    </div>
+
+    <!-- Cabinet Refinishing -->
+    <div class="type-card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="3" width="16" height="18" rx="1.5"/>
+          <path d="M12 3v18"/>
+          <circle cx="9" cy="12" r="0.6" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="12" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div class="type-label">Cabinet Refinishing</div>
+      <div class="type-sub">Doors, boxes, drawers</div>
+      <div class="flat-rate-pill">Flat-rate flow</div>
+    </div>
+
+    <!-- Commercial -->
+    <div class="type-card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="8" width="9" height="13"/>
+          <rect x="12" y="3" width="9" height="18"/>
+          <path d="M6 12h3M6 15h3M6 18h3M15 7h3M15 10h3M15 13h3M15 16h3"/>
+        </svg>
+      </div>
+      <div class="type-label">Commercial</div>
+      <div class="type-sub">Offices, retail, multi-unit</div>
+    </div>
+
+    <!-- Deck & Fence -->
+    <div class="type-card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18"/>
+          <path d="M5 21V9l2-2v14M11 21V7l2-2v16M17 21V5l2-2v18"/>
+        </svg>
+      </div>
+      <div class="type-label">Deck &amp; Fence</div>
+      <div class="type-sub">Stain, seal, repair</div>
+    </div>
+
+    <!-- Pressure Washing -->
+    <div class="type-card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 13l6-6 3 3-6 6z"/>
+          <path d="M13 7l3-3 3 3-3 3"/>
+          <path d="M6 21c1.5-2 1.5-4-1-6"/>
+          <path d="M10 21c1.5-2 1.5-4-1-6"/>
+        </svg>
+      </div>
+      <div class="type-label">Pressure Washing</div>
+      <div class="type-sub">Wash, prep before paint</div>
+    </div>
+
+  </div>
+
+  <div class="info-strip">
+    <span class="dot"></span>
+    <span><b>Interior</b> selected — production rates and interior templates will load.</span>
+  </div>
+</main>
+
+<footer class="app-footer">
+  <div class="total-block">
+    <div class="lbl mono">PROJECT TOTAL ⌃</div>
+    <div class="amt mono">$138,420.03</div>
+    <div class="sub">with 7% tax</div>
+  </div>
+  <div class="footer-spacer"></div>
+  <div class="footer-meta mono">26 rooms · 122 surfaces · 1,385.5h labor</div>
+  <button class="btn">Back</button>
+  <button class="btn-primary">Next →</button>
+</footer>
+
+</body>
+</html>
