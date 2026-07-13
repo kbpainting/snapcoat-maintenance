@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proposal Builder — Rooms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0C1117; --panel:#151B24; --line:#223044; --tint:#10161E;
+    --text:#E8EDF4; --muted:#93A1B5; --accent:#3E9DF3;
+    --good:#34d399; --warn:#fbbf24; --bad:#f87171;
+    --grad: linear-gradient(135deg,#2563EB 0%,#7C3AED 55%,#EC4899 100%);
+  }
+  *{box-sizing:border-box;}
+  html,body{max-width:100%; overflow-x:hidden;}
+  body{
+    background:var(--paper); color:var(--text);
+    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    margin:0; -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  h1,h2,h3,.display{ font-family:'Space Grotesk',-apple-system,sans-serif; }
+  .mono{ font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  /* ---------- hide scrollbars on horizontal scrollers ---------- */
+  .noscroll{ scrollbar-width:none; -ms-overflow-style:none; }
+  .noscroll::-webkit-scrollbar{ display:none; }
+
+  /* ================= HEADER ================= */
+  header.app-header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(21,27,36,.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .hdr-row1{
+    height:52px; padding:0 16px; display:flex; align-items:center; gap:12px;
+  }
+  .back-btn{
+    width:32px; height:32px; min-width:32px; border:1px solid var(--line);
+    border-radius:10px; background:transparent; color:var(--muted);
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .title-block{ line-height:1.25; }
+  .title-block .t1{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; }
+  .title-block .t2{ font-size:11px; color:var(--muted); }
+  .hdr-spacer{ flex:1; }
+  .draft-badge{ display:flex; align-items:center; gap:6px; font-size:11px; color:var(--muted); white-space:nowrap; }
+  .dot-good{ width:6px; height:6px; border-radius:50%; background:var(--good); display:inline-block; }
+
+  .hdr-row2{
+    display:flex; gap:6px; padding:6px 12px 10px; overflow-x:auto;
+  }
+  .chip{
+    border-radius:99px; padding:5px 12px; font-size:12px; font-weight:500;
+    white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;
+    flex:0 0 auto;
+  }
+  .chip.completed{ border:1px solid var(--line); background:var(--tint); color:var(--muted); }
+  .chip.completed .lead{ color:var(--good); }
+  .chip.active{ background:var(--grad); color:#fff; font-weight:700; }
+  .chip.active .lead{
+    width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center; font-size:10px;
+  }
+  .chip.upcoming{ border:1px solid var(--line); color:var(--muted); }
+  .chip.upcoming .lead{
+    width:16px; height:16px; border-radius:50%; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:10px;
+    flex:0 0 auto; color:var(--muted);
+  }
+
+  .progress-track{ height:3px; background:var(--tint); width:100%; }
+  .progress-fill{ height:100%; background:var(--grad); width:66.6667%; }
+
+  /* ================= ROOM NAVIGATOR ================= */
+  .room-nav{
+    position:sticky; top:97px; z-index:20;
+    background:var(--paper); padding:8px 16px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .room-nav-scroll{
+    display:flex; gap:8px; overflow-x:auto; flex:1; min-width:0;
+  }
+  .room-chip{
+    flex:0 0 auto; border:1px solid var(--line); background:var(--tint);
+    color:var(--muted); border-radius:99px; padding:6px 12px; font-size:12px;
+    display:flex; align-items:center; gap:6px; white-space:nowrap;
+  }
+  .room-chip .rc-price{ font-size:11px; }
+  .room-chip.is-active{ border-color:var(--accent); color:var(--text); background:var(--panel); }
+  .room-nav-actions{
+    flex:0 0 auto; display:flex; align-items:center; gap:8px; font-size:12px;
+    color:var(--accent); white-space:nowrap;
+  }
+  .room-nav-actions .divider{ color:var(--line); }
+  .room-nav-actions button{ background:none; border:none; color:var(--accent); font-size:12px; padding:2px; font-weight:500; }
+
+  /* ================= CONTENT ================= */
+  .content{ flex:1 1 auto; width:100%; max-width:1080px; margin:0 auto; padding:16px; padding-bottom:24px; }
+
+  .room-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    margin-bottom:12px; overflow:hidden;
+  }
+  .room-summary{
+    display:grid;
+    grid-template-columns: 24px 1fr auto 110px 32px;
+    align-items:center; gap:12px;
+    padding:14px 16px;
+    cursor:pointer;
+  }
+  .chev{ color:var(--muted); font-size:14px; transition:transform .18s ease; text-align:center; }
+  .room-card.expanded .chev{ transform:rotate(90deg); color:var(--accent); }
+  .name-block{ min-width:0; }
+  .rname{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; }
+  .rdims{ font-size:11px; color:var(--muted); margin-top:2px; }
+  .badge-price{ display:contents; }
+  .badge{
+    background:var(--tint); color:var(--muted); border-radius:99px;
+    padding:3px 10px; font-size:11px; white-space:nowrap; justify-self:end;
+  }
+  .price{ font-weight:700; font-size:15px; color:var(--good); text-align:right; min-width:110px; }
+  .kebab{
+    width:32px; height:32px; border:1px solid var(--line); border-radius:10px;
+    background:transparent; color:var(--muted); display:flex; align-items:center;
+    justify-content:center; font-size:16px;
+  }
+
+  .room-card.expanded .room-summary{ border-bottom:1px solid var(--line); }
+  .room-body{ padding:16px; }
+
+  /* ---- surface table (>=768) ---- */
+  .surface-table{ width:100%; border-collapse:collapse; }
+  .surface-table th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--muted); font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-weight:500; padding:0 10px 8px;
+  }
+  .surface-table th.num, .surface-table td.num{ text-align:right; }
+  .surface-table td{ padding:11px 10px; font-size:13px; border-top:1px solid var(--line); }
+  .surface-table tbody tr:hover{ background:var(--tint); }
+  .surface-table td.money{
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;
+    text-align:right;
+  }
+  .surface-table td.total-cell{ color:var(--good); font-weight:700; }
+
+  /* ---- surface cards (<768) ---- */
+  .surface-cards{ display:none; flex-direction:column; gap:10px; }
+  .surf-card{ background:var(--tint); border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .surf-head{ display:flex; align-items:center; justify-content:space-between; }
+  .surf-name{ font-weight:700; font-size:14px; }
+  .surf-chev{ color:var(--muted); font-size:14px; }
+  .pill-row{ display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+  .pill{
+    background:var(--panel); border:1px solid var(--line); border-radius:99px;
+    padding:3px 9px; font-size:11px; color:var(--muted);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;
+  }
+  .surf-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:2px; }
+  .surf-cost{ font-size:11px; color:var(--muted); }
+  .surf-total{
+    font-size:14px; font-weight:700; color:var(--good);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;
+  }
+
+  .room-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .ghost-add{
+    flex:1 1 240px; border:1px dashed var(--line); border-radius:12px; background:transparent;
+    color:var(--muted); padding:12px; font-size:13px; font-weight:500;
+  }
+  .ghost-add:hover{ border-color:var(--accent); color:var(--text); }
+  .photos-btn{
+    border:1px solid var(--line); border-radius:12px; background:transparent;
+    color:var(--muted); padding:12px 16px; font-size:13px; white-space:nowrap;
+  }
+
+  .end-note{ text-align:center; color:var(--muted); font-size:12px; padding:18px 0 4px; }
+  .end-note .link{ color:var(--accent); cursor:pointer; }
+
+  /* ================= FOOTER ================= */
+  footer.app-footer{
+    position:sticky; bottom:0; z-index:50;
+    background:rgba(21,27,36,.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    padding:10px 16px; display:flex; align-items:center; gap:12px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  }
+  .total-block{ cursor:pointer; line-height:1.2; }
+  .total-block .tl{
+    font-size:10px; letter-spacing:.12em; color:var(--muted);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    display:flex; align-items:center; gap:4px;
+  }
+  .total-block .ta{
+    font-size:20px; font-weight:700; color:var(--text);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-variant-numeric: tabular-nums;
+  }
+  .total-block .ts{ font-size:10px; color:var(--muted); }
+  .footer-spacer{ flex:1; }
+  .footer-stats{
+    display:none; font-size:12px; color:var(--muted);
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace; white-space:nowrap;
+  }
+  .btn-back{
+    padding:10px 18px; border-radius:12px; border:1px solid var(--line);
+    color:var(--muted); background:transparent; font-size:13px; font-weight:500; white-space:nowrap;
+  }
+  .btn-primary{
+    padding:10px 22px; border-radius:12px; background:var(--grad); color:#fff;
+    font-weight:700; font-size:13px; border:none; white-space:nowrap;
+  }
+
+  @media (min-width:768px){
+    .footer-stats{ display:block; }
+    .surface-table{ display:table; }
+    .surface-cards{ display:none !important; }
+  }
+  @media (max-width:767px){
+    .surface-table{ display:none; }
+    .surface-cards{ display:flex; }
+  }
+
+  @media (max-width:640px){
+    .room-summary{
+      grid-template-columns: 24px 1fr 32px;
+      row-gap:8px;
+    }
+    .chev{ grid-column:1; grid-row:1; }
+    .name-block{ grid-column:2; grid-row:1; min-width:0; }
+    .kebab{ grid-column:3; grid-row:1; }
+    .badge-price{
+      display:flex !important; grid-column:1 / -1; grid-row:2; justify-content:space-between;
+      align-items:center; padding-left:36px;
+    }
+    .badge{ justify-self:auto; }
+    .price{ min-width:0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="hdr-row1">
+    <button class="back-btn">‹</button>
+    <div class="title-block">
+      <div class="t1">Proposal Builder</div>
+      <div class="t2">Katherine Moore · Draft</div>
+    </div>
+    <div class="hdr-spacer"></div>
+    <div class="draft-badge"><span class="dot-good"></span>Saved</div>
+  </div>
+  <div class="hdr-row2 noscroll">
+    <div class="chip completed"><span class="lead">✓</span>Customer</div>
+    <div class="chip completed"><span class="lead">✓</span>Project</div>
+    <div class="chip completed"><span class="lead">✓</span>Template</div>
+    <div class="chip active"><span class="lead">4</span>Rooms</div>
+    <div class="chip upcoming"><span class="lead">5</span>Summary</div>
+    <div class="chip upcoming"><span class="lead">6</span>Send</div>
+  </div>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+</header>
+
+<div class="room-nav">
+  <div class="room-nav-scroll noscroll">
+    <div class="room-chip"><span>Garage 16</span><span class="rc-price mono">$2,123</span></div>
+    <div class="room-chip"><span>Unit 204 — Kitchen</span><span class="rc-price mono">$3,413</span></div>
+    <div class="room-chip is-active"><span>Building A</span><span class="rc-price mono">$16,846</span></div>
+    <div class="room-chip"><span>Clubhouse Lobby</span><span class="rc-price mono">$9,240</span></div>
+    <div class="room-chip"><span>Exterior — Fencing</span><span class="rc-price mono">$5,980</span></div>
+  </div>
+  <div class="room-nav-actions">
+    <button>Collapse all</button>
+    <span class="divider">·</span>
+    <button>+ Add room</button>
+  </div>
+</div>
+
+<main class="content">
+
+  <!-- Room 1 -->
+  <div class="room-card">
+    <div class="room-summary">
+      <div class="chev">›</div>
+      <div class="name-block">
+        <div class="rname">Garage 16</div>
+        <div class="rdims mono">120′ × 1′ × 10′</div>
+      </div>
+      <div class="badge-price">
+        <span class="badge">5 surfaces</span>
+        <span class="price mono">$2,123.62</span>
+      </div>
+      <button class="kebab">⋮</button>
+    </div>
+  </div>
+
+  <!-- Room 2 -->
+  <div class="room-card">
+    <div class="room-summary">
+      <div class="chev">›</div>
+      <div class="name-block">
+        <div class="rname">Unit 204 — Kitchen</div>
+        <div class="rdims mono">14′ × 12′ × 9′</div>
+      </div>
+      <div class="badge-price">
+        <span class="badge">6 surfaces</span>
+        <span class="price mono">$3,412.80</span>
+      </div>
+      <button class="kebab">⋮</button>
+    </div>
+  </div>
+
+  <!-- Room 3 — Building A — EXPANDED -->
+  <div class="room-card expanded">
+    <div class="room-summary">
+      <div class="chev">›</div>
+      <div class="name-block">
+        <div class="rname">Building A</div>
+        <div class="rdims mono">Common Areas · 4 levels</div>
+      </div>
+      <div class="badge-price">
+        <span class="badge">4 surfaces</span>
+        <span class="price mono">$16,845.55</span>
+      </div>
+      <button class="kebab">⋮</button>
+    </div>
+
+    <div class="room-body">
+      <!-- Desktop table -->
+      <table class="surface-table">
+        <thead>
+          <tr>
+            <th>Surface</th>
+            <th>Coats</th>
+            <th class="num">Qty</th>
+            <th>Paint</th>
+            <th class="num">Labor</th>
+            <th class="num">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Walls</td>
+            <td>2</td>
+            <td class="num mono">4,240 sf</td>
+            <td>SW ProMar 200</td>
+            <td class="money">$2,981.40</td>
+            <td class="money total-cell">$8,120.15</td>
+          </tr>
+          <tr>
+            <td>Ceilings</td>
+            <td>2</td>
+            <td class="num mono">2,120 sf</td>
+            <td>SW Eminence</td>
+            <td class="money">$1,204.20</td>
+            <td class="money total-cell">$3,308.60</td>
+          </tr>
+          <tr>
+            <td>Trim &amp; Doors</td>
+            <td>1</td>
+            <td class="num mono">640 lf</td>
+            <td>SW ProClassic</td>
+            <td class="money">$1,890.00</td>
+            <td class="money total-cell">$3,916.80</td>
+          </tr>
+          <tr>
+            <td>Metal Railings</td>
+            <td>2</td>
+            <td class="num mono">180 lf</td>
+            <td>SW Pro Industrial</td>
+            <td class="money">$760.00</td>
+            <td class="money total-cell">$1,500.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Mobile cards -->
+      <div class="surface-cards">
+        <div class="surf-card">
+          <div class="surf-head">
+            <span class="surf-name">Walls</span>
+            <span class="surf-chev">›</span>
+          </div>
+          <div class="pill-row">
+            <span class="pill">2 coats</span>
+            <span class="pill">4,240 sf</span>
+            <span class="pill">24.2 gal</span>
+          </div>
+          <div class="surf-foot">
+            <span class="surf-cost">Labor $2,981 · Mat $5,139</span>
+            <span class="surf-total">$8,120.15</span>
+          </div>
+        </div>
+        <div class="surf-card">
+          <div class="surf-head">
+            <span class="surf-name">Ceilings</span>
+            <span class="surf-chev">›</span>
+          </div>
+          <div class="pill-row">
+            <span class="pill">2 coats</span>
+            <span class="pill">2,120 sf</span>
+            <span class="pill">12.6 gal</span>
+          </div>
+          <div class="surf-foot">
+            <span class="surf-cost">Labor $1,204 · Mat $2,104</span>
+            <span class="surf-total">$3,308.60</span>
+          </div>
+        </div>
+        <div class="surf-card">
+          <div class="surf-head">
+            <span class="surf-name">Trim &amp; Doors</span>
+            <span class="surf-chev">›</span>
+          </div>
+          <div class="pill-row">
+            <span class="pill">1 coat</span>
+            <span class="pill">640 lf</span>
+            <span class="pill">5.8 gal</span>
+          </div>
+          <div class="surf-foot">
+            <span class="surf-cost">Labor $1,890 · Mat $2,027</span>
+            <span class="surf-total">$3,916.80</span>
+          </div>
+        </div>
+        <div class="surf-card">
+          <div class="surf-head">
+            <span class="surf-name">Metal Railings</span>
+            <span class="surf-chev">›</span>
+          </div>
+          <div class="pill-row">
+            <span class="pill">2 coats</span>
+            <span class="pill">180 lf</span>
+            <span class="pill">3.1 gal</span>
+          </div>
+          <div class="surf-foot">
+            <span class="surf-cost">Labor $760 · Mat $740</span>
+            <span class="surf-total">$1,500.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="room-actions">
+        <button class="ghost-add">+ Add surface to Building A</button>
+        <button class="photos-btn">📷 Photos (3)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Room 4 -->
+  <div class="room-card">
+    <div class="room-summary">
+      <div class="chev">›</div>
+      <div class="name-block">
+        <div class="rname">Clubhouse Lobby</div>
+        <div class="rdims mono">32′ × 28′ × 14′</div>
+      </div>
+      <div class="badge-price">
+        <span class="badge">7 surfaces</span>
+        <span class="price mono">$9,240.10</span>
+      </div>
+      <button class="kebab">⋮</button>
+    </div>
+  </div>
+
+  <!-- Room 5 -->
+  <div class="room-card">
+    <div class="room-summary">
+      <div class="chev">›</div>
+      <div class="name-block">
+        <div class="rname">Exterior — Perimeter Fencing</div>
+        <div class="rdims mono">860′ × — × 6′</div>
+      </div>
+      <div class="badge-price">
+        <span class="badge">3 surfaces</span>
+        <span class="price mono">$5,980.00</span>
+      </div>
+      <button class="kebab">⋮</button>
+    </div>
+  </div>
+
+  <div class="end-note">…21 more rooms · <span class="link">Collapse all ↑</span></div>
+
+</main>
+
+<footer class="app-footer">
+  <div class="total-block">
+    <div class="tl">PROJECT TOTAL ⌃</div>
+    <div class="ta">$138,420.03</div>
+    <div class="ts">with 7% tax</div>
+  </div>
+  <div class="footer-spacer"></div>
+  <div class="footer-stats">26 rooms · 122 surfaces · 1,385.5h labor</div>
+  <button class="btn-back">Back</button>
+  <button class="btn-primary">Next →</button>
+</footer>
+
+</body>
+</html>
