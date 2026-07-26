@@ -475,7 +475,7 @@
 <div class="wrap">
 
   <header class="masthead">
-    <div class="eyebrow">SnapCoat AI Division &nbsp;·&nbsp; Launch Film &nbsp;·&nbsp; Shooting Treatment v1</div>
+    <div class="eyebrow">SnapCoat AI Division &nbsp;·&nbsp; Launch Film &nbsp;·&nbsp; Shooting Treatment v2 &nbsp;·&nbsp; No Cast</div>
     <h1>The<br>Leak</h1>
     <div class="strapline">Grey goes in. Color comes out.</div>
 
@@ -483,7 +483,7 @@
       <div><dt>Runtime</dt><dd>60 sec</dd></div>
       <div><dt>Structure</dt><dd>4 × 15s</dd></div>
       <div><dt>Frame</dt><dd>9:16</dd></div>
-      <div><dt>Batch</dt><dd>4-up / act</dd></div>
+      <div><dt>Cast</dt><dd>None</dd></div>
     </dl>
   </header>
 
@@ -492,8 +492,41 @@
     <div class="sec-head" style="padding-top:1.4rem"><h2>The idea</h2></div>
     <div class="stack">
       <p class="lede">Every painting company in the country is bleeding money through channels it doesn't control, and calling that bleed "marketing." So the film opens in a world that has been drained — a blacked-out warehouse where forty paint buckets, each stenciled with a channel name, pour grey onto the floor. No color anywhere. That's the business before.</p>
-      <p class="lede">The payoff is literal for a painting company: the agents come online and <em>color returns to the world.</em> They seal the holes, chroma races up the walls, and the last thing the viewer sees is a fully saturated room and a man who built the thing himself. Nobody in the contractor-coaching space is making this. That's the point.</p>
-      <p class="lede">Four acts, one 15-second generation each. You'll batch four takes per act, keep the strongest, and cut a 60-second film out of four clips.</p>
+      <p class="lede">The payoff is literal for a painting company: the agents come online and <em>color returns to the world.</em> They seal the holes, chroma races up the walls, and the room ends up more alive than it has ever been. Nobody in the contractor-coaching space is making this. That's the point.</p>
+      <p class="lede">Four acts, one 15-second generation each, four takes batched per act. You keep the strongest of each and cut a 60-second film out of four clips.</p>
+    </div>
+  </section>
+
+  <section>
+    <hr class="rule">
+    <div class="sec-head" style="padding-top:1.4rem"><h2>No one is in this film</h2></div>
+
+    <div class="stack-lg">
+      <p class="lede">Version 1 put you on camera. This one doesn't, and it is the better film for it — every prompt below has been rewritten so there is no identifiable person in a single frame.</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>What you gain</h3>
+          <p>Faces and hands are the two things AI video still gets wrong, and a face that shifts between Act I and Act IV destroys the whole illusion. Removing the cast removes the single largest failure risk in the production — no character training, no reference stills, no wardrobe continuity, no uncanny mouth on a talking head. Your regeneration rate drops hard.</p>
+        </div>
+        <div class="card">
+          <h3>What it costs you</h3>
+          <p>You lose the trust that a real face buys, and you're selling one-on-one coaching. That has to come back somewhere, so it comes back in the voice.</p>
+        </div>
+        <div class="card">
+          <h3>Record the voiceover yourself</h3>
+          <p>Do not use a synthetic voice on this one. Your voice becomes the only human thing in sixty seconds, which makes it carry more weight than it would over a talking head. Phone voice memo, quiet room, phone six inches off-axis from your mouth so you don't pop the P's. One take where you sound certain beats ten takes where you sound polished.</p>
+        </div>
+        <div class="card">
+          <h3>Where your face goes instead</h3>
+          <p>This film builds the myth. It is not supposed to close anybody. Post a plain, unedited talking-head follow-up a day later — you, phone camera, no effects, explaining what you actually built. The contrast between the two posts does more than either alone, and it puts your face on the offer without putting it in the film.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="eyebrow">The new continuity rule</div>
+        <p>With no cast, continuity is about the <b>room</b>, not a person. The same warehouse, the same bucket design, the same light direction, and the same lens language have to survive all four acts or it reads as four unrelated clips. The global tail below exists to enforce that — it goes on every prompt without exception.</p>
+      </div>
     </div>
   </section>
 
@@ -504,31 +537,31 @@
     <div class="stack-lg">
       <div class="cards">
         <div class="card">
-          <h3>Lock the character first</h3>
-          <p>Shoot four reference stills of yourself before you touch Higgsfield: black work jacket, same haircut, hard side light against a dark wall, one straight-on, one 3/4, one profile, one full body. Feed those as the character reference or start frame on every act you appear in. Without it, act one and act four look like two different people and the whole film falls apart.</p>
-        </div>
-        <div class="card">
-          <h3>Wardrobe never changes</h3>
-          <p>One outfit for the entire film: black work jacket, dark tee, dark work pants, boots. The only thing that changes across 60 seconds is the color of the world around you. If the jacket changes, the metaphor breaks.</p>
-        </div>
-        <div class="card">
           <h3>One camera move per clip</h3>
-          <p>15 seconds is long for a generation. Give each clip a single dominant move that runs the whole duration, and write the action as one continuous take. The phrase <span style="font-family:var(--mono);font-size:.85em">"continuous shot, no cuts"</span> is in every prompt on purpose. Asking for cuts inside one generation is what produces morphing.</p>
+          <p>15 seconds is long for a single generation. Give each clip one dominant move that runs the full duration and write the action as one continuous take. The phrase <span style="font-family:var(--mono);font-size:.85em">"continuous shot, no cuts"</span> opens every prompt on purpose — asking for cuts inside one generation is what produces morphing.</p>
         </div>
         <div class="card">
           <h3>Batch strategy</h3>
-          <p>Your four slots per act aren't four rolls of the same dice. Take A is the hero. B, C and D are genuinely different stagings, so if the hero fails you still have a usable act instead of four broken versions of the same idea.</p>
+          <p>Your four slots per act are not four rolls of the same dice. Take A is the hero. B, C and D are genuinely different stagings, so when the hero fails you still have a usable act instead of four broken copies of one idea.</p>
+        </div>
+        <div class="card">
+          <h3>Build Act I first, then match to it</h3>
+          <p>Generate Act I before anything else. Whichever take wins becomes your reference frame for the warehouse — feed that clip's last frame in as the start image for Act II so the geometry and light carry forward. Do the same down the chain. This is what replaces character consistency.</p>
+        </div>
+        <div class="card">
+          <h3>No text in frame, ever</h3>
+          <p>Stenciled words on the buckets are the one exception and they will still come out imperfect — that's fine, they read as texture at speed. Everything else, every super and every number, goes on in post. Generated text always garbles.</p>
         </div>
       </div>
 
       <div class="stack">
-        <h3>Global grade &amp; look — paste into every prompt tail</h3>
+        <h3>Global tail — append to every prompt</h3>
         <div class="take" style="--act: var(--act3)">
           <div class="take-head">
             <span class="take-id"><b>TAIL</b> &nbsp;<i>append to all 16 prompts</i></span>
             <button class="copy" type="button">Copy</button>
           </div>
-          <pre>Shot on anamorphic lenses, 2x horizontal squeeze, subtle horizontal lens flares, Kodak Vision3 5219 film grain, deep crushed blacks, thick volumetric haze, photoreal cinematic live-action, shallow depth of field, high dynamic range, 9:16 vertical.</pre>
+          <pre>No people, no human figures, no faces, no hands anywhere in frame. Shot on anamorphic lenses, 2x horizontal squeeze, subtle horizontal lens flares, Kodak Vision3 5219 film grain, deep crushed blacks, thick volumetric haze, photoreal cinematic live-action, shallow depth of field, high dynamic range, 9:16 vertical.</pre>
         </div>
       </div>
 
@@ -539,7 +572,7 @@
             <span class="take-id"><b>NEGATIVE</b></span>
             <button class="copy" type="button">Copy</button>
           </div>
-          <pre>cartoon, anime, 3D render, plastic CGI skin, video game look, warped hands, extra fingers, distorted face, morphing features, flickering, on-screen text, watermark, subtitles, logos, oversaturated HDR, flat low-contrast lighting, blurry, low resolution, split screen, multiple cuts.</pre>
+          <pre>people, person, human, face, hands, arms, body, crowd, silhouette of a person, mannequin, cartoon, anime, 3D render, plastic CGI, video game look, morphing, flickering, on-screen text, watermark, subtitles, logos, oversaturated HDR, flat low-contrast lighting, blurry, low resolution, split screen, multiple cuts.</pre>
         </div>
       </div>
     </div>
@@ -551,7 +584,7 @@
       <div class="tc">00:00 — 00:15</div>
       <div class="act-title-block">
         <h2>Act I · The Leak</h2>
-        <p class="act-purpose">The hook and the problem. Cold, drained, and expensive. This clip has 1.5 seconds to stop a thumb, so it opens on motion and a number, not on a face.</p>
+        <p class="act-purpose">The hook and the problem. Cold, drained, expensive. This clip has a second and a half to stop a thumb, so it opens on motion — liquid moving in the dark.</p>
       </div>
     </div>
 
@@ -562,7 +595,7 @@
         <div class="beats">
           <div class="beat"><b>00 – 05</b><span>Extreme macro: thick grey-green paint pouring from a punctured five-gallon bucket onto cracked concrete.</span></div>
           <div class="beat"><b>05 – 10</b><span>Camera pulls back and rises — forty identical leaking buckets in a grid across a blacked-out warehouse, each stenciled with a channel name.</span></div>
-          <div class="beat"><b>10 – 15</b><span>Settles wide. A man stands ankle-deep at the center of the flood, back to camera, not moving.</span></div>
+          <div class="beat"><b>10 – 15</b><span>Settles wide on the flood. At the center: a single pair of empty work boots standing in the grey, a paint roller dropped beside them. Whoever owned this walked away.</span></div>
         </div>
 
         <dl class="spec">
@@ -590,16 +623,16 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Super Dolly Out (hold through full 15s)</div>
-            <pre>Continuous 15-second live-action shot, no cuts. Opens as an extreme macro on a battered five-gallon paint bucket on cracked concrete; a jagged puncture in its side pours thick desaturated grey-green paint in a slow heavy ribbon that pools outward across the floor. The camera pulls back steadily and rises, revealing a vast blacked-out warehouse filled with a grid of forty identical leaking buckets, each stenciled in white paint with a single word — GOOGLE, META, SEO, WEBSITE, LEADS, FOLLOW-UP — all bleeding the same grey into one enormous spreading pool. The move settles into a low wide as a man in a black work jacket stands ankle-deep at the dead center of the flood, back to camera, motionless. Single hard sodium-vapor work light overhead, cold moonlight shafts through clerestory windows, thick volumetric haze with visible god rays, deep crushed blacks with no fill, dust motes drifting. Shot on anamorphic 40mm at T2, 2x horizontal squeeze, blue horizontal lens flares, Kodak Vision3 5219 grain, heavily desaturated cold grade, teal shadows, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. Opens as an extreme macro on a battered five-gallon paint bucket on cracked concrete; a jagged puncture in its side pours thick desaturated grey-green paint in a slow heavy ribbon that pools outward across the floor. The camera pulls back steadily and rises, revealing a vast blacked-out warehouse filled with a grid of forty identical leaking buckets, each stenciled in rough white paint with a single word — GOOGLE, META, SEO, WEBSITE, LEADS, FOLLOW-UP — all bleeding the same grey into one enormous spreading pool. The move settles into a low wide where a single pair of empty worn work boots stands abandoned at the dead center of the flood, a paint roller dropped in the grey beside them. Single hard sodium-vapor work light overhead, cold moonlight shafts through clerestory windows, thick volumetric haze with visible god rays, deep crushed blacks with no fill, dust motes drifting. No people, no human figures, no faces, no hands. Shot on anamorphic 40mm at T2, 2x horizontal squeeze, blue horizontal lens flares, Kodak Vision3 5219 grain, heavily desaturated cold grade, teal shadows, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE B</b> &nbsp;<i>Face First — safest hook</i></span>
+              <span class="take-id"><b>TAKE B</b> &nbsp;<i>The Dropped Phone — strongest hook</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Dolly In → Crane Up</div>
-            <pre>Continuous 15-second live-action shot, no cuts. Opens tight on the face of a man in a black work jacket standing in a pitch-black warehouse, lit only by the cold blue glow of a phone screen held below his chin, jaw set, eyes reading something he does not like. The camera pushes in slowly, then drops and pulls back as he lowers the phone, revealing thick grey paint flooding silently past his boots. The pull-back continues into a wide as dozens of punctured five-gallon buckets come into view around him, each stenciled GOOGLE, META, SEO, WEBSITE, all pouring grey into one spreading pool. Hard top light with heavy falloff, cold moonlight through high windows, thick atmospheric haze, deep crushed blacks. Shot on anamorphic 40mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. Opens tight and low on a cracked phone lying face-up in a shallow flood of thick grey paint on a concrete floor, its screen still glowing cold blue, displaying a simple line graph falling steadily downward, grey paint creeping slowly across the glass and swallowing the screen. The camera lifts and pulls back as the light dies, revealing a vast blacked-out warehouse filled with forty punctured five-gallon buckets, each stenciled in rough white paint GOOGLE, META, SEO, WEBSITE, LEADS, FOLLOW-UP, all pouring grey into one enormous spreading pool. Hard raking top light, cold moonlight through high windows, thick atmospheric haze, deep crushed blacks, wet specular reflections on the flood. No people, no human figures, no faces, no hands. Shot on anamorphic 40mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
@@ -608,7 +641,7 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Robo Arm (low tracking) → Crane Up</div>
-            <pre>Continuous 15-second live-action shot, no cuts. The camera glides two inches above a concrete warehouse floor, tracking fast through a spreading flood of thick grey-green paint, passing between and beneath rows of punctured five-gallon buckets whose stenciled labels — GOOGLE, META, SEO, WEBSITE, LEADS — smear past the lens as heavy ribbons of grey pour down into the flood. The camera rises smoothly at the end of the move to find a man in a black work jacket standing ankle-deep at the center of it all, back to camera, perfectly still. Hard overhead sodium work lights in a receding line, cold moonlight shafts, thick volumetric haze, god rays, deep crushed blacks, wet specular highlights on the paint surface. Shot on anamorphic 32mm at T2.8, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. The camera glides two inches above a concrete warehouse floor, tracking fast through a spreading flood of thick grey-green paint, passing between and beneath rows of punctured five-gallon buckets whose stenciled labels — GOOGLE, META, SEO, WEBSITE, LEADS — smear past the lens as heavy ribbons of grey pour down into the flood. The camera rises smoothly at the end of the move to reveal the full scale of the grid stretching away into darkness, and a single pair of empty work boots standing abandoned in the grey at its center. Hard overhead sodium work lights in a receding line, cold moonlight shafts, thick volumetric haze, god rays, deep crushed blacks, wet specular highlights on the paint surface. No people, no human figures, no faces, no hands. Shot on anamorphic 32mm at T2.8, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
@@ -617,7 +650,7 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Crane Down / Set Me Free</div>
-            <pre>Continuous 15-second live-action shot, no cuts. Opens on the dark steel ceiling of an enormous empty warehouse, a single caged work lamp swinging slowly on its cord, shadows sweeping across the rafters. The camera descends steadily through thick haze, past hanging chains and dust, revealing below a floor entirely flooded with thick grey-green paint and ringed by forty punctured five-gallon buckets stenciled GOOGLE, META, SEO, WEBSITE, LEADS, FOLLOW-UP, all bleeding into it. The descent ends in a low wide with a man in a black work jacket standing ankle-deep at the center as a small silhouette. Cold moonlight through clerestory windows, one hard swinging practical, heavy volumetric haze and god rays, deep crushed blacks, no fill. Shot on anamorphic 28mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, teal shadows, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. Opens on the dark steel ceiling of an enormous empty warehouse, a single caged work lamp swinging slowly on its cord, shadows sweeping across the rafters. The camera descends steadily through thick haze, past hanging chains and drifting dust, revealing below a floor entirely flooded with thick grey-green paint and ringed by forty punctured five-gallon buckets stenciled GOOGLE, META, SEO, WEBSITE, LEADS, FOLLOW-UP, all bleeding into it. The descent ends in a low wide on the still grey surface, the swinging lamp reflected and rocking in it. Cold moonlight through clerestory windows, one hard swinging practical, heavy volumetric haze and god rays, deep crushed blacks, no fill. No people, no human figures, no faces, no hands. Shot on anamorphic 28mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, teal shadows, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
         </div>
       </div>
@@ -630,7 +663,7 @@
       <div class="tc">00:15 — 00:30</div>
       <div class="act-title-block">
         <h2>Act II · The Jump</h2>
-        <p class="act-purpose">The risk and the crash. This is the act that earns the rest — it's the only place you admit it went badly, which is exactly why people believe the number in Act III.</p>
+        <p class="act-purpose">The risk and the crash. This act earns the rest of the film — it's the only place you admit it went badly, which is exactly why the number in Act III lands.</p>
       </div>
     </div>
 
@@ -639,15 +672,15 @@
       <div class="stack-lg">
 
         <div class="beats">
-          <div class="beat"><b>00 – 05</b><span>He turns to camera in the flood. Dolly-zoom — the warehouse stretches violently behind him.</span></div>
-          <div class="beat"><b>05 – 10</b><span>A wall of retainer invoices tears loose and swirls upward around him.</span></div>
-          <div class="beat"><b>10 – 15</b><span>He steps forward through the paper. One amber ember burns through the last sheet — the first color in the film.</span></div>
+          <div class="beat"><b>00 – 05</b><span>A corridor of agency retainer invoices pinned floor to ceiling down both walls. Dolly-zoom — the corridor stretches away violently.</span></div>
+          <div class="beat"><b>05 – 10</b><span>The invoices tear loose and cyclone upward into the dark.</span></div>
+          <div class="beat"><b>10 – 15</b><span>One sheet hangs in the air. An amber ember ignites at its center and eats outward — the first color in the film.</span></div>
         </div>
 
         <dl class="spec">
           <div><dt>Motion</dt><dd>Dolly Zoom (Vertigo), push in</dd></div>
           <div><dt>Lens</dt><dd>50mm → 24mm through the zoom</dd></div>
-          <div><dt>Key light</dt><dd>Hard, low, camera-left, single source</dd></div>
+          <div><dt>Key light</dt><dd>Hard, low, single source down the corridor</dd></div>
           <div><dt>Accent</dt><dd>One amber ember — the only warm pixel</dd></div>
           <div><dt>Atmos</dt><dd>Paper, ash, haze</dd></div>
           <div><dt>Grade</dt><dd>Still drained. Hold the color back.</dd></div>
@@ -665,11 +698,11 @@
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE A</b> &nbsp;<i>Vertigo — hero</i></span>
+              <span class="take-id"><b>TAKE A</b> &nbsp;<i>The Corridor — hero</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Dolly Zoom / Vertigo</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket stands ankle-deep in a flooded warehouse and turns slowly to face camera; as he turns, a dolly-zoom stretches the room violently behind him, walls racing away while he stays locked in frame. Behind him a wall of stacked paper invoices tears loose and swirls upward into the dark in a cyclone of paper. He steps forward through the storm toward the lens, and in the final seconds a single ember of orange light burns through the last sheet of paper drifting past his face — the only warm color in the frame. One hard low key light from camera left, deep shadow across the right side of his face, single catchlight, thick volumetric haze, ash and paper in the air, deep crushed blacks. Shot on anamorphic 50mm at T2 pushing to 24mm, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade with one amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A narrow corridor inside a dark warehouse, both walls papered floor to ceiling with hundreds of pinned printed invoices, curling at the edges. The camera moves down the corridor as a dolly-zoom stretches it violently, walls racing away while the far end stays locked in frame. Halfway through, every sheet tears loose at once and cyclones upward into the blackness above in a storm of paper. The storm clears and one single sheet hangs suspended in the air in front of the lens; an ember of orange light ignites at its center and eats outward through the paper in a slow burning ring — the only warm color in the frame. One hard low key light raking down the corridor, deep shadow, thick volumetric haze, ash and paper drifting, deep crushed blacks. No people, no human figures, no faces, no hands. Shot on anamorphic 50mm at T2 pushing to 24mm, 2x squeeze, blue horizontal flares turning warm at the ember, Kodak Vision3 5219 grain, desaturated cold grade with one amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
@@ -678,25 +711,25 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Crash Zoom In</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A thick stack of printed agency retainer invoices falls in slow motion into a flooded warehouse floor of grey paint, sheets separating in the air and sinking one by one beneath the surface. The camera crash-zooms in on the final sheet still floating, until it fills the frame; a single ember of orange light ignites at its center and eats outward through the paper in a slow burning ring, the first warm color in the film, its glow reflecting across the grey flood. Hard raking top light, everything else black, thick haze, floating ash, wet specular reflections on the paint. Shot on anamorphic 85mm macro at T1.8, 2x squeeze, warm flare from the ember, Kodak Vision3 5219 grain, desaturated cold grade with a single amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A thick stack of printed agency retainer invoices falls in slow motion into a flooded warehouse floor of grey paint, the sheets separating in the air and sinking one by one beneath the surface. The camera crash-zooms in on the final sheet still floating until it fills the frame; a single ember of orange light ignites at its center and eats outward through the paper in a slow burning ring, the first warm color in the film, its glow reflecting across the wet grey flood around it. Hard raking top light, everything else black, thick haze, floating ash, wet specular reflections on the paint. No people, no human figures, no faces, no hands. Shot on anamorphic 85mm macro at T1.8, 2x squeeze, warm flare from the ember, Kodak Vision3 5219 grain, desaturated cold grade with a single amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE C</b> &nbsp;<i>Snorricam Walkout</i></span>
+              <span class="take-id"><b>TAKE C</b> &nbsp;<i>The Dying Office</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
-            <div class="motion"><b>Camera preset:</b> Snorricam (body-mounted)</div>
-            <pre>Continuous 15-second live-action shot, no cuts. Body-mounted camera locked to the chest of a man in a black work jacket, his face and shoulders held perfectly still in frame while the world whips past behind him. He walks out of a glass-walled marketing office, and behind him every monitor and overhead panel dies one bank at a time, the room collapsing into darkness in his wake. He keeps walking into a black warehouse, the last light falling off until only a hard rim light traces the edge of his jaw. He does not look back. Cold fluorescent office light dying to a single hard rim, thick haze, deep crushed blacks, motion blur in the background only. Shot on anamorphic 24mm at T2.8, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <div class="motion"><b>Camera preset:</b> Super Dolly In (steady, unbroken)</div>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. The camera pushes steadily forward through an empty glass-walled marketing agency office at night — rows of vacant desks, dashboards glowing on wall-mounted monitors, abandoned coffee cups, chairs pushed back. As the camera advances, every monitor and overhead light panel dies one bank at a time in sequence ahead of it, the room collapsing into darkness section by section. The push continues through the far doorway into a pitch-black warehouse where a shallow grey flood catches the last dying glow. Cold fluorescent office light extinguishing bank by bank, ending in near-total darkness, thick haze, deep crushed blacks, wet reflections. No people, no human figures, no faces, no hands. Shot on anamorphic 24mm at T2.8, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE D</b> &nbsp;<i>The Hold — most emotional</i></span>
+              <span class="take-id"><b>TAKE D</b> &nbsp;<i>The Hold — most patient</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Super Dolly In (very slow)</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket stands dead center of a vast dark warehouse as a flood of thick grey paint rises steadily around him, past his boots, past his shins, to his knees. He does not move and does not look down; his eyes stay level with the lens. The camera pushes in very slowly the entire time. In the last seconds a single glowing amber ember drifts down from above and lands on the surface of the grey, sending out one perfect expanding ripple. One hard overhead source directly above him, near-total darkness beyond, thick volumetric haze, god rays, deep crushed blacks, wet specular highlights on the rising paint. Shot on anamorphic 40mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade with one amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A single intact five-gallon paint bucket stands alone and undamaged on a low concrete plinth at the center of a vast dark warehouse while a flood of thick grey paint rises steadily around the plinth, climbing its sides. The camera pushes in very slowly the entire time, holding the bucket dead center. In the final seconds a single glowing amber ember drifts down from the blackness above and lands on the surface of the grey, sending out one perfect expanding ripple that catches the light. One hard overhead source directly above the plinth, near-total darkness beyond, thick volumetric haze, god rays, deep crushed blacks, wet specular highlights on the rising paint. No people, no human figures, no faces, no hands. Shot on anamorphic 40mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade with one amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
         </div>
       </div>
@@ -709,7 +742,7 @@
       <div class="tc">00:30 — 00:45</div>
       <div class="act-title-block">
         <h2>Act III · The Deploy</h2>
-        <p class="act-purpose">The spectacle. Six agents come online, seal the leaks, and color floods a world that has been grey for thirty seconds. Spend your generation credits here — this is the act people screenshot.</p>
+        <p class="act-purpose">The spectacle. Six agents come online, seal the leaks, and color floods a world that has been grey for thirty seconds. Spend your generations here — this is the act people screenshot.</p>
       </div>
     </div>
 
@@ -718,9 +751,9 @@
       <div class="stack-lg">
 
         <div class="beats">
-          <div class="beat"><b>00 – 05</b><span>His palm presses a dark slab. One amber pulse races out along the floor in every direction.</span></div>
-          <div class="beat"><b>05 – 10</b><span>Six columns of liquid light ignite around him in a hexagon and resolve into tall figures made of chrome and wet pigment. Names burn at their feet.</span></div>
-          <div class="beat"><b>10 – 15</b><span>Ribbons of color spiral up his arms and lock into plates of paint armor. Chroma races up the walls like a wave.</span></div>
+          <div class="beat"><b>00 – 05</b><span>A dark slab in the floor ignites on its own. One amber pulse races outward across the grey in every direction.</span></div>
+          <div class="beat"><b>05 – 10</b><span>Six columns of liquid light ignite in a hexagon and resolve into tall figures of chrome and wet pigment. Names burn into the floor at their feet.</span></div>
+          <div class="beat"><b>10 – 15</b><span>They seal the leaks. Grey stops. Chroma races up the walls like a wave until the whole warehouse is saturated.</span></div>
         </div>
 
         <dl class="spec">
@@ -748,7 +781,7 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> 360 Orbit (one full revolution over 15s)</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket presses his palm down onto a dark slab in the center of a flooded warehouse; a single amber pulse races outward across the grey surface in every direction. Six towering columns of liquid light ignite around him in a hexagon and resolve into tall humanoid figures built from flowing liquid chrome and wet pigment, each one burning a word into the floor at its feet — GOOGLE, META, SEO, WEBSITE, OUTREACH, FOLLOW-UP. The camera orbits him a full 360 degrees as ribbons of saturated color spiral up his arms and lock into overlapping plates of glossy paint armor. Behind the figures, brilliant chroma floods up the grey walls like a rising wave, saturating the entire warehouse. Blue-white cores with warm amber edge falloff, the figures are the only light source, thick volumetric haze, hard god rays, wet reflections across the floor. Shot on anamorphic 32mm at T2.8, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A dark metal slab set into the flooded floor of a blacked-out warehouse ignites on its own with a single amber pulse that races outward across the grey surface in every direction. Six towering columns of liquid light erupt around it in a hexagon and resolve into tall abstract humanoid forms built from flowing liquid chrome and wet pigment — faceless, featureless, sculptural, not human — each one burning a word into the floor at its base: GOOGLE, META, SEO, WEBSITE, OUTREACH, FOLLOW-UP. The camera orbits the hexagon a full 360 degrees as the figures raise their arms and brilliant chroma floods up the grey walls behind them like a rising wave, saturating the entire warehouse from floor to ceiling. Blue-white cores with warm amber edge falloff, the figures are the only light source, thick volumetric haze, hard god rays, wet mirror reflections across the flooded floor. No human faces, no human skin, no hands, no people — the figures are abstract sculptural light forms. Shot on anamorphic 32mm at T2.8, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
@@ -757,7 +790,7 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> FPV Drone</div>
-            <pre>Continuous 15-second live-action shot, no cuts. An FPV drone camera flies at high speed through a vast dark warehouse filled with punctured paint buckets. Six tall humanoid figures made of liquid chrome and wet pigment move bucket to bucket ahead of the camera, sealing each puncture with a single stroke of molten color; the moment a hole is sealed the grey stops and brilliant chroma races up the wall behind it like spilled light. The drone banks hard between them, skims the flooded floor throwing spray, climbs, and bursts out through a high window into open blue sky in the final seconds. Motion blur, whip transitions in-camera, brilliant colored light sources, thick volumetric haze, god rays, wet specular reflections. Shot on anamorphic 14mm at T2.8, 2x squeeze, aggressive horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. An FPV drone camera flies at high speed through a vast dark warehouse filled with punctured paint buckets. Ahead of it, ribbons of molten colored light streak bucket to bucket, sealing each puncture with a single brilliant stroke; the instant a hole seals the grey stops pouring and saturated chroma races up the wall behind it like spilled light. The drone banks hard between the rows, skims the flooded floor throwing spray, climbs through the rising color, and bursts out through a high window into open blue sky in the final seconds. Motion blur, in-camera whips, brilliant colored light sources, thick volumetric haze, god rays, wet specular reflections. No people, no human figures, no faces, no hands. Shot on anamorphic 14mm at T2.8, 2x squeeze, aggressive horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
@@ -766,16 +799,16 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Bullet Time (180° arc)</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket stands at the center of an enormous explosion of chromatic paint that freezes in mid-air around him — tens of thousands of suspended droplets in every saturated color, each one razor sharp and prismatic, forming a frozen sphere of color that fills the warehouse. The camera arcs 180 degrees through the frozen field in slow bullet-time, threading between the droplets, revealing his face lit from every direction by colored light. In the final three seconds time snaps back to normal speed and the paint crashes outward past the lens in a wall of color. Hard backlight raking through the suspended droplets, prismatic refraction, brilliant saturated color, thick volumetric haze, deep blacks behind the color field. Shot on anamorphic 50mm at T2, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A single five-gallon bucket at the center of a dark warehouse erupts in an enormous explosion of chromatic paint that freezes in mid-air around it — tens of thousands of suspended droplets in every saturated color, each one razor sharp and prismatic, forming a frozen sphere of color that fills the entire room. The camera arcs 180 degrees through the frozen field in slow bullet-time, threading between the droplets, colored light raking across the warehouse walls beyond. In the final three seconds time snaps back to full speed and the paint crashes outward past the lens in a wall of color. Hard backlight raking through the suspended droplets, prismatic refraction, brilliant saturated color, thick volumetric haze, deep blacks behind the color field. No people, no human figures, no faces, no hands. Shot on anamorphic 50mm at T2, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE D</b> &nbsp;<i>Suit Up Macro — the detail shot</i></span>
+              <span class="take-id"><b>TAKE D</b> &nbsp;<i>Macro Seal — the detail shot</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
-            <div class="motion"><b>Camera preset:</b> Eyes In / Face Punch, reversed to pull out</div>
-            <pre>Continuous 15-second live-action shot, no cuts. Opens as an extreme macro on a human eye in near darkness; reflected in the iris, six columns of colored light ignite in sequence. The camera pulls back steadily and rotates, revealing a man in a black work jacket in a dark warehouse as ribbons of liquid saturated paint spiral up his forearm, wrap his shoulder and harden into overlapping plates of glossy armor, dry pigment sparking off each plate as it locks. The pull-back ends on a low three-quarter portrait as brilliant chroma floods up the grey wall behind him. Colored light sources only, hard rim light, thick volumetric haze, sparks of dry pigment in the air, wet specular highlights on the armor. Shot on anamorphic 85mm macro at T1.8 pulling to 35mm, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <div class="motion"><b>Camera preset:</b> Super Dolly Out (macro to wide)</div>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. Opens as an extreme macro on the jagged puncture in a five-gallon bucket, grey paint still pouring out of it in the dark. A thread of molten colored light enters frame, traces the wound, and seals it shut with a single brilliant stroke; the grey stops instantly and the sealed seam glows. The camera pulls back steadily and rotates, revealing saturated chroma racing up the warehouse wall behind the bucket and spreading outward across the whole room as bucket after bucket seals in sequence into the distance, the flooded floor turning from dead grey to mirror-bright color. Colored light sources only, hard rim light on the bucket rim, thick volumetric haze, sparks of dry pigment in the air, wet specular highlights. No people, no human figures, no faces, no hands. Shot on anamorphic 85mm macro at T1.8 pulling to 35mm, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
         </div>
       </div>
@@ -788,7 +821,7 @@
       <div class="tc">00:45 — 01:00</div>
       <div class="act-title-block">
         <h2>Act IV · The Offer</h2>
-        <p class="act-purpose">Drop the spectacle and be a person. After 45 seconds of scale, a plain, real, well-lit human face is the most persuasive image you have left. Do not stylize this one.</p>
+        <p class="act-purpose">Come down off the spectacle and land on something you can actually buy. The room is alive, the crate is real, the last frame is the ask.</p>
       </div>
     </div>
 
@@ -797,18 +830,18 @@
       <div class="stack-lg">
 
         <div class="beats">
-          <div class="beat"><b>00 – 05</b><span>Wide: the warehouse fully alive, walls flowing with color, every bucket full and glowing. He walks toward camera.</span></div>
-          <div class="beat"><b>05 – 11</b><span>Slow push to a tight, natural, un-stylized portrait. He speaks directly to lens. A revenue line climbs softly behind him.</span></div>
-          <div class="beat"><b>11 – 15</b><span>He lifts a full bucket of glowing color toward camera until it fills frame. Cut to end card.</span></div>
+          <div class="beat"><b>00 – 06</b><span>The warehouse fully alive — walls flowing with color, every bucket full and glowing, floor mirror-wet.</span></div>
+          <div class="beat"><b>06 – 12</b><span>Camera finds a shipping crate on a workbench. It opens. The equipment inside glows, cabled and ready.</span></div>
+          <div class="beat"><b>12 – 15</b><span>Push to the card resting on top: PROGRAMMED. READY. YOURS. Cut to end card on black.</span></div>
         </div>
 
         <dl class="spec">
           <div><dt>Motion</dt><dd>Slow Dolly In, ending static</dd></div>
-          <div><dt>Lens</dt><dd>85mm T1.4 — spherical, not anamorphic</dd></div>
-          <div><dt>Key light</dt><dd>Soft, 45°, large source — interview look</dd></div>
-          <div><dt>Back</dt><dd>Hair light + warm practical bokeh</dd></div>
-          <div><dt>Grade</dt><dd>Full color, natural skin. No stylization.</dd></div>
-          <div><dt>End card</dt><dd>3s hold, black, single line + CTA</dd></div>
+          <div><dt>Lens</dt><dd>40mm → 50mm macro on the crate</dd></div>
+          <div><dt>Key light</dt><dd>Hard directional, large soft top bounce</dd></div>
+          <div><dt>Practical</dt><dd>The buckets themselves glow — motivated light</dd></div>
+          <div><dt>Grade</dt><dd>Full saturation, warm bias, clean</dd></div>
+          <div><dt>End card</dt><dd>3s hold, black, one line + CTA</dd></div>
         </dl>
 
         <div class="stack-sm">
@@ -823,11 +856,11 @@
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE A</b> &nbsp;<i>The Turn — hero</i></span>
+              <span class="take-id"><b>TAKE A</b> &nbsp;<i>The Reveal — hero</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Super Dolly In (slow, settling static)</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A vast warehouse now fully alive with saturated color — walls flowing with wet chromatic paint, rows of five-gallon buckets full and glowing from within, the floor mirror-wet and reflecting all of it. A man in a black work jacket walks unhurried out of the color directly toward the lens. The camera pushes in slowly and settles into a tight, natural, un-stylized portrait as he stops and speaks directly to camera, relaxed and certain. Behind him, far out of focus, a softly glowing revenue line climbs upward through warm bokeh. Large soft key at 45 degrees camera left, gentle fill, a clean hair light separating him from the background, warm practical bokeh, natural skin tones, no haze on the face. Shot on spherical 85mm at T1.4, very shallow depth of field, subtle film grain, rich natural color grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A vast warehouse now fully alive with saturated color — walls flowing with wet chromatic paint, long rows of five-gallon buckets filled to the brim and glowing from within, the floor mirror-wet and reflecting all of it. The camera glides forward through the rows unhurried, colored light washing across the lens, and pushes toward a single lit workbench at the far end where a wooden shipping crate sits waiting. It settles as the crate's lid lifts away on its own, revealing a compact computer and hardware setup glowing softly in cut black foam, cables coiled with precision, and a printed card resting on top. Motivated practical light from the glowing buckets, one hard key on the workbench, deep saturated color everywhere, thick haze catching the light, wet reflections. No people, no human figures, no faces, no hands. Shot on anamorphic 40mm at T2.8, 2x squeeze, warm horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
@@ -836,25 +869,25 @@
               <button class="copy" type="button">Copy</button>
             </div>
             <div class="motion"><b>Camera preset:</b> Lazy Susan / Product Orbit</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A wooden shipping crate lands on a black seamless tabletop and its lid lifts away on its own. Inside, nested in cut black foam, sits a compact computer and hardware setup glowing softly from within, cables coiled with precision, and a single printed card resting on top reading PROGRAMMED. READY. YOURS. The camera orbits the crate slowly through a full revolution, raking hard specular light across the machined surfaces and the foam edges. In the final seconds a hand enters frame and lifts the card. Hard directional key with a large soft top bounce, deep black seamless background, controlled specular highlights, a faint warm glow from inside the machine, no haze. Shot on spherical 50mm macro at T4, tabletop product lighting, subtle film grain, rich natural color grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A wooden shipping crate sits on a black seamless tabletop and its lid lifts away on its own, tipping back slowly. Inside, nested in precisely cut black foam, sits a compact computer and hardware setup glowing softly from within, cables coiled with machine precision, and a single printed card resting on top. The camera orbits the crate slowly through one full revolution, raking hard specular light across the machined surfaces, the foam edges and the grain of the crate. In the final seconds it pushes in on the card until it fills frame. Hard directional key with a large soft top bounce, deep black seamless background, controlled specular highlights, a faint warm glow from inside the machine, no haze. No people, no human figures, no faces, no hands. Shot on spherical 50mm macro at T4, tabletop product lighting, subtle film grain, rich natural color grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE C</b> &nbsp;<i>Handoff — strongest metaphor close</i></span>
+              <span class="take-id"><b>TAKE C</b> &nbsp;<i>The Full Bucket — strongest metaphor close</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
-            <div class="motion"><b>Camera preset:</b> Robo Arm (arc in, rack focus)</div>
-            <pre>Continuous 15-second live-action shot, no cuts. In a warehouse saturated with color, a man in a black work jacket lifts a five-gallon bucket filled to the brim with glowing, luminous chromatic paint and extends it slowly toward the lens until the open bucket nearly fills the frame, light from inside it washing up across his face and the walls. The camera arcs in as he offers it, and focus racks from his eyes down to the handle in his hand in the final seconds. Warm key from the bucket itself acting as a practical source, soft ambient fill from the colored walls, clean hair light, wet specular reflections on the floor, natural skin tones. Shot on spherical 50mm at T2, shallow depth of field, subtle film grain, rich saturated natural color grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <div class="motion"><b>Camera preset:</b> Robo Arm (arc down and in)</div>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. A single five-gallon bucket stands alone on a wet warehouse floor, filled to the absolute brim with luminous chromatic paint that glows from within and throws colored light up across the walls and ceiling around it. The surface is perfectly still, then one drop falls into it from above and sends a slow ripple outward, the light bending through the wave. The camera arcs down and in toward the rim until the glowing surface fills the entire frame and the color becomes the only thing on screen. Motivated light from the bucket itself as the sole practical source, saturated colored bounce on every surface, wet specular reflections across the floor, thick haze catching the glow. No people, no human figures, no faces, no hands. Shot on anamorphic 50mm at T2, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
 
           <div class="take">
             <div class="take-head">
-              <span class="take-id"><b>TAKE D</b> &nbsp;<i>Walk to Black — cleanest end-card runway</i></span>
+              <span class="take-id"><b>TAKE D</b> &nbsp;<i>The Door — cleanest end-card runway</i></span>
               <button class="copy" type="button">Copy</button>
             </div>
-            <div class="motion"><b>Camera preset:</b> Static hold with slow drift back</div>
-            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket walks away from camera out of a fully saturated warehouse of flowing color and into pure darkness; as he passes, the color drains from the frame behind him in a slow wave until only one tall lit doorway remains, glowing warm at the far end of the black. He stops, turns back over his shoulder toward the lens for two seconds, then continues through the door. The frame is left in near-total black with a single warm rectangle of light and wide empty negative space at the bottom third of the frame. Hard backlight through the doorway, deep crushed blacks, thick volumetric haze catching the door light, silhouette rim only. Shot on anamorphic 40mm at T2, 2x squeeze, warm horizontal flare, Kodak Vision3 5219 grain, photoreal cinematic live-action, 9:16 vertical.</pre>
+            <div class="motion"><b>Camera preset:</b> Super Dolly Out (retreat)</div>
+            <pre>Continuous 15-second live-action shot, no cuts, no people anywhere. The camera retreats steadily backward out of a warehouse saturated with flowing color, the glowing buckets and chromatic walls receding into the distance ahead of it. As it withdraws through a tall doorway the color drains from the frame edges in a slow wave until the shot is almost entirely black, holding on one warm lit rectangle of the doorway far in the center-top of frame with wide empty negative space filling the bottom two thirds. The last seconds are near-still, a single ribbon of colored light still moving inside the distant doorway. Hard backlight through the doorway, deep crushed blacks, thick volumetric haze catching the door light, no fill. No people, no human figures, no faces, no hands. Shot on anamorphic 40mm at T2, 2x squeeze, warm horizontal flare, Kodak Vision3 5219 grain, photoreal cinematic live-action, 9:16 vertical.</pre>
           </div>
         </div>
       </div>
@@ -870,19 +903,19 @@
       <div class="cards">
         <div class="card">
           <h3>Sound design</h3>
-          <p><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT I</b> — sub drone at 40Hz, thick liquid pour, distant warehouse room tone. No music yet. Silence is the hook.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT II</b> — paper storm, one reverse riser building the whole act, everything drops out for a half-second before the ember.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT III</b> — the drop lands exactly on the palm press. Six ignition hits, one per agent. Big low-end.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT IV</b> — music pulls back to a single sustained pad so his voice sits on top. Never talk over a drop.</p>
+          <p><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT I</b> — sub drone at 40Hz, thick liquid pour, distant warehouse room tone. No music yet. Silence is the hook.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT II</b> — paper storm, one reverse riser building the whole act, everything drops out for a half-second before the ember.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT III</b> — the drop lands exactly on the slab ignition. Six hits, one per agent. Big low-end.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT IV</b> — music pulls back to a single sustained pad so your voice sits on top. Never talk over a drop.</p>
         </div>
         <div class="card">
           <h3>Cutting four clips into sixty seconds</h3>
-          <p>Each act ends on a held frame and the next begins on movement, so straight cuts work — no transitions, no dissolves, no whip wipes. The only exception is Act II into Act III: hard cut to two frames of black on the ember, then the palm press. That black is the whole edit's punctuation.<br><br>If a generation drifts in the last two seconds, trim it and let the act run 13 seconds. A 56-second film is fine. A morphing face is not.</p>
+          <p>Each act ends on a held frame and the next begins on movement, so straight cuts work — no transitions, no dissolves, no whip wipes. The only exception is Act II into Act III: hard cut to two frames of black on the ember, then the slab ignition. That black is the whole edit's punctuation.<br><br>If a generation drifts in the last two seconds, trim it and let the act run 13. A 56-second film is fine. A melting bucket is not.</p>
         </div>
         <div class="card">
           <h3>Text treatment</h3>
-          <p>Never burn text into the generation — it comes out garbled. Add supers in post. Condensed uppercase, bottom third, appearing on a beat and cutting out hard rather than fading. Two lines maximum. Every number gets its own screen.</p>
+          <p>Supers go on in post — condensed uppercase, bottom third, appearing on a beat and cutting out hard rather than fading. Two lines maximum. Every number gets its own screen. With no face on camera the supers are carrying more weight than usual, so give them room and let them hold.</p>
         </div>
         <div class="card">
           <h3>The thumbnail</h3>
-          <p>Pull it from Act III Take C — him at the center of the frozen color explosion. That single frame is the most arresting image in the film and it works at 40 pixels wide in a feed, which is the only size that matters.</p>
+          <p>Pull it from Act III Take C — the frozen chromatic explosion around the single bucket. That frame is the most arresting image in the film and it still reads at 40 pixels wide in a feed, which is the only size that matters.</p>
         </div>
       </div>
 
@@ -942,7 +975,7 @@
   </section>
 
   <footer>
-    <span>The Leak · Launch Film Treatment v1</span>
+    <span>The Leak · Launch Film Treatment v2 · No cast</span>
     <span>4 acts · 16 prompts · 60 seconds</span>
   </footer>
 
@@ -957,11 +990,10 @@
       var text = pre.textContent.trim();
 
       var done = function () {
-        var original = "Copy";
         btn.textContent = "Copied";
         btn.setAttribute("data-done", "1");
         setTimeout(function () {
-          btn.textContent = original;
+          btn.textContent = "Copy";
           btn.removeAttribute("data-done");
         }, 1600);
       };
