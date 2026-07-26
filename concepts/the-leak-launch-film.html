@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="THE LEAK - cinematic launch film treatment. 4 acts x 15s, 16 Higgsfield prompts.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8E%AC</text></svg>">
+<style>
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  button { font: inherit; }
+  pre { margin: 0; }
+</style>
+<title>THE LEAK — Launch Film Treatment</title>
+
+<style>
+  :root {
+    --bg:        #E6E7E2;
+    --bg-2:      #DEE0DA;
+    --bg-3:      #F2F3EF;
+    --line:      #C6C9C1;
+    --line-soft: #D6D8D1;
+    --text:      #14171A;
+    --dim:       #555C55;
+    --faint:     #868D85;
+
+    --act1: #5F6A55;
+    --act2: #B33C22;
+    --act3: #0E8E7F;
+    --act4: #B57900;
+
+    --display: "Avenir Next Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --body: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+    --gut: clamp(1.15rem, 4.5vw, 2.5rem);
+    --measure: 64ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:        #0A0B0C;
+      --bg-2:      #121417;
+      --bg-3:      #171A1D;
+      --line:      #262A2E;
+      --line-soft: #1D2124;
+      --text:      #E4E6E2;
+      --dim:       #969B95;
+      --faint:     #5F655F;
+
+      --act1: #7E8874;
+      --act2: #D9573A;
+      --act3: #1FC6B0;
+      --act4: #F0A400;
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #E6E7E2; --bg-2: #DEE0DA; --bg-3: #F2F3EF;
+    --line: #C6C9C1; --line-soft: #D6D8D1;
+    --text: #14171A; --dim: #555C55; --faint: #868D85;
+    --act1: #5F6A55; --act2: #B33C22; --act3: #0E8E7F; --act4: #B57900;
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0A0B0C; --bg-2: #121417; --bg-3: #171A1D;
+    --line: #262A2E; --line-soft: #1D2124;
+    --text: #E4E6E2; --dim: #969B95; --faint: #5F655F;
+    --act1: #7E8874; --act2: #D9573A; --act3: #1FC6B0; --act4: #F0A400;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 0 var(--gut) 6rem;
+  }
+
+  p { margin: 0; max-width: var(--measure); }
+
+  .stack { display: flex; flex-direction: column; gap: 1rem; }
+  .stack-lg { display: flex; flex-direction: column; gap: 2.25rem; }
+  .stack-sm { display: flex; flex-direction: column; gap: .55rem; }
+
+  /* ---------- typographic roles ---------- */
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .69rem;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(3.6rem, 17vw, 9rem);
+    line-height: .82;
+    letter-spacing: -.012em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(1.9rem, 7vw, 3.1rem);
+    line-height: .95;
+    letter-spacing: .005em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.12rem;
+    letter-spacing: .07em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .lede {
+    font-size: clamp(1.06rem, 3.4vw, 1.26rem);
+    line-height: 1.52;
+    color: var(--dim);
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead { padding: clamp(3rem, 11vw, 6.5rem) 0 0; }
+
+  .masthead h1 { margin-top: 1.4rem; }
+
+  .strapline {
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    font-size: clamp(.7rem, 2.6vw, .9rem);
+    color: var(--act3);
+    margin-top: 1.5rem;
+  }
+
+  .specstrip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 2.75rem 0 0;
+  }
+  @media (min-width: 40rem) { .specstrip { grid-template-columns: repeat(4, 1fr); } }
+
+  .specstrip div {
+    background: var(--bg);
+    padding: .95rem 1rem 1.05rem;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  .specstrip dt {
+    font-family: var(--mono);
+    font-size: .63rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .specstrip dd {
+    margin: 0;
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 1.22rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- generic section ---------- */
+
+  section { margin-top: clamp(3.5rem, 10vw, 6rem); }
+
+  .rule {
+    height: 1px;
+    background: var(--line);
+    border: 0;
+    margin: 0;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: .85rem;
+    padding-bottom: 1.4rem;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- act bands ---------- */
+
+  .act { --act: var(--act1); margin-top: clamp(3.5rem, 10vw, 5.5rem); }
+  #act-1 { --act: var(--act1); }
+  #act-2 { --act: var(--act2); }
+  #act-3 { --act: var(--act3); }
+  #act-4 { --act: var(--act4); }
+
+  .act-head {
+    border-top: 2px solid var(--act);
+    padding-top: 1.1rem;
+    display: grid;
+    gap: .55rem;
+  }
+  @media (min-width: 52rem) {
+    .act-head {
+      grid-template-columns: 9rem 1fr;
+      align-items: start;
+      gap: 0 2.5rem;
+    }
+  }
+
+  .tc {
+    font-family: var(--mono);
+    font-size: .74rem;
+    letter-spacing: .1em;
+    color: var(--act);
+    font-variant-numeric: tabular-nums;
+    text-transform: uppercase;
+    padding-top: .35rem;
+  }
+
+  .act-title-block { display: flex; flex-direction: column; gap: .7rem; }
+  .act-purpose { color: var(--dim); font-size: .98rem; max-width: 54ch; }
+
+  .act-body {
+    display: grid;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+  @media (min-width: 52rem) {
+    .act-body { grid-template-columns: 9rem 1fr; gap: 2rem 2.5rem; }
+    .act-body > .full { grid-column: 2; }
+  }
+
+  /* ---------- beats ---------- */
+
+  .beats { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line-soft); }
+  .beat {
+    display: grid;
+    grid-template-columns: 4.2rem 1fr;
+    gap: 0 1.1rem;
+    padding: .85rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: baseline;
+  }
+  .beat b {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .09em;
+    color: var(--act);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+  .beat span { font-size: .97rem; }
+
+  /* ---------- spec table ---------- */
+
+  .spec {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--line-soft);
+  }
+  @media (min-width: 34rem) { .spec { grid-template-columns: 1fr 1fr; column-gap: 2rem; } }
+
+  .spec div {
+    display: grid;
+    grid-template-columns: 5.6rem 1fr;
+    gap: 1rem;
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: baseline;
+  }
+  .spec dt {
+    font-family: var(--mono);
+    font-size: .63rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .spec dd { margin: 0; font-size: .92rem; font-family: var(--mono); line-height: 1.45; }
+
+  /* ---------- quotes: VO + on-screen ---------- */
+
+  .vo {
+    border-left: 2px solid var(--act);
+    padding: .2rem 0 .2rem 1.15rem;
+    font-size: 1.06rem;
+    line-height: 1.5;
+    max-width: 52ch;
+  }
+  .vo em { font-style: italic; color: var(--dim); }
+
+  .super {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: clamp(1.35rem, 5vw, 1.9rem);
+    letter-spacing: .01em;
+    line-height: 1.06;
+    color: var(--act);
+  }
+  .super small {
+    display: block;
+    font-family: var(--mono);
+    font-size: .63rem;
+    letter-spacing: .15em;
+    color: var(--faint);
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+  }
+
+  /* ---------- prompt blocks ---------- */
+
+  .takes { display: flex; flex-direction: column; gap: 1rem; }
+
+  .take {
+    background: var(--bg-3);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--act);
+  }
+
+  .take-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .7rem .9rem .7rem 1rem;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+
+  .take-id {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .take-id b { color: var(--act); font-weight: 400; }
+  .take-id i { font-style: normal; color: var(--faint); }
+
+  .copy {
+    font-family: var(--mono);
+    font-size: .63rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--dim);
+    border: 1px solid var(--line);
+    padding: .35rem .7rem;
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  .copy:hover { color: var(--act); border-color: var(--act); }
+  .copy:focus-visible { outline: 2px solid var(--act); outline-offset: 2px; }
+  .copy[data-done="1"] { color: var(--act); border-color: var(--act); }
+
+  .motion {
+    font-family: var(--mono);
+    font-size: .68rem;
+    line-height: 1.5;
+    padding: .6rem 1rem;
+    color: var(--dim);
+    border-bottom: 1px solid var(--line-soft);
+    background: var(--bg-2);
+  }
+  .motion b { color: var(--act); font-weight: 400; letter-spacing: .08em; text-transform: uppercase; }
+
+  .take pre {
+    margin: 0;
+    padding: 1rem;
+    font-family: var(--mono);
+    font-size: .78rem;
+    line-height: 1.62;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--text);
+  }
+
+  /* ---------- callout / global cards ---------- */
+
+  .cards { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (min-width: 44rem) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--bg);
+    padding: 1.3rem 1.35rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .card p { font-size: .95rem; color: var(--dim); }
+  .card h3 { color: var(--text); }
+
+  .note {
+    border: 1px solid var(--act2);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .note .eyebrow { color: var(--act2); }
+  .note p { font-size: .96rem; }
+
+  /* ---------- caption block ---------- */
+
+  .caption-box {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 1.4rem 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: .95rem;
+  }
+  .caption-box p { font-size: 1rem; max-width: 58ch; }
+  .caption-box .num-list { display: flex; flex-direction: column; gap: .4rem; }
+  .caption-box .num-list p { padding-left: 1.4rem; text-indent: -1.4rem; }
+
+  ol.plain, ul.plain { margin: 0; padding-left: 1.15rem; display: flex; flex-direction: column; gap: .5rem; }
+  ol.plain li, ul.plain li { font-size: .96rem; }
+  ol.plain li::marker, ul.plain li::marker { color: var(--faint); font-family: var(--mono); font-size: .8rem; }
+
+  .names { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .names span {
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: .95rem;
+    border: 1px solid var(--line);
+    padding: .4rem .75rem;
+    color: var(--dim);
+  }
+
+  footer {
+    margin-top: clamp(4rem, 12vw, 7rem);
+    border-top: 1px solid var(--line);
+    padding-top: 1.3rem;
+    font-family: var(--mono);
+    font-size: .66rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">SnapCoat AI Division &nbsp;·&nbsp; Launch Film &nbsp;·&nbsp; Shooting Treatment v1</div>
+    <h1>The<br>Leak</h1>
+    <div class="strapline">Grey goes in. Color comes out.</div>
+
+    <dl class="specstrip">
+      <div><dt>Runtime</dt><dd>60 sec</dd></div>
+      <div><dt>Structure</dt><dd>4 × 15s</dd></div>
+      <div><dt>Frame</dt><dd>9:16</dd></div>
+      <div><dt>Batch</dt><dd>4-up / act</dd></div>
+    </dl>
+  </header>
+
+  <section>
+    <hr class="rule">
+    <div class="sec-head" style="padding-top:1.4rem"><h2>The idea</h2></div>
+    <div class="stack">
+      <p class="lede">Every painting company in the country is bleeding money through channels it doesn't control, and calling that bleed "marketing." So the film opens in a world that has been drained — a blacked-out warehouse where forty paint buckets, each stenciled with a channel name, pour grey onto the floor. No color anywhere. That's the business before.</p>
+      <p class="lede">The payoff is literal for a painting company: the agents come online and <em>color returns to the world.</em> They seal the holes, chroma races up the walls, and the last thing the viewer sees is a fully saturated room and a man who built the thing himself. Nobody in the contractor-coaching space is making this. That's the point.</p>
+      <p class="lede">Four acts, one 15-second generation each. You'll batch four takes per act, keep the strongest, and cut a 60-second film out of four clips.</p>
+    </div>
+  </section>
+
+  <section>
+    <hr class="rule">
+    <div class="sec-head" style="padding-top:1.4rem"><h2>Before you generate</h2></div>
+
+    <div class="stack-lg">
+      <div class="cards">
+        <div class="card">
+          <h3>Lock the character first</h3>
+          <p>Shoot four reference stills of yourself before you touch Higgsfield: black work jacket, same haircut, hard side light against a dark wall, one straight-on, one 3/4, one profile, one full body. Feed those as the character reference or start frame on every act you appear in. Without it, act one and act four look like two different people and the whole film falls apart.</p>
+        </div>
+        <div class="card">
+          <h3>Wardrobe never changes</h3>
+          <p>One outfit for the entire film: black work jacket, dark tee, dark work pants, boots. The only thing that changes across 60 seconds is the color of the world around you. If the jacket changes, the metaphor breaks.</p>
+        </div>
+        <div class="card">
+          <h3>One camera move per clip</h3>
+          <p>15 seconds is long for a generation. Give each clip a single dominant move that runs the whole duration, and write the action as one continuous take. The phrase <span style="font-family:var(--mono);font-size:.85em">"continuous shot, no cuts"</span> is in every prompt on purpose. Asking for cuts inside one generation is what produces morphing.</p>
+        </div>
+        <div class="card">
+          <h3>Batch strategy</h3>
+          <p>Your four slots per act aren't four rolls of the same dice. Take A is the hero. B, C and D are genuinely different stagings, so if the hero fails you still have a usable act instead of four broken versions of the same idea.</p>
+        </div>
+      </div>
+
+      <div class="stack">
+        <h3>Global grade &amp; look — paste into every prompt tail</h3>
+        <div class="take" style="--act: var(--act3)">
+          <div class="take-head">
+            <span class="take-id"><b>TAIL</b> &nbsp;<i>append to all 16 prompts</i></span>
+            <button class="copy" type="button">Copy</button>
+          </div>
+          <pre>Shot on anamorphic lenses, 2x horizontal squeeze, subtle horizontal lens flares, Kodak Vision3 5219 film grain, deep crushed blacks, thick volumetric haze, photoreal cinematic live-action, shallow depth of field, high dynamic range, 9:16 vertical.</pre>
+        </div>
+      </div>
+
+      <div class="stack">
+        <h3>Negative prompt — same on all sixteen</h3>
+        <div class="take" style="--act: var(--act2)">
+          <div class="take-head">
+            <span class="take-id"><b>NEGATIVE</b></span>
+            <button class="copy" type="button">Copy</button>
+          </div>
+          <pre>cartoon, anime, 3D render, plastic CGI skin, video game look, warped hands, extra fingers, distorted face, morphing features, flickering, on-screen text, watermark, subtitles, logos, oversaturated HDR, flat low-contrast lighting, blurry, low resolution, split screen, multiple cuts.</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACT I ================= -->
+  <section class="act" id="act-1">
+    <div class="act-head">
+      <div class="tc">00:00 — 00:15</div>
+      <div class="act-title-block">
+        <h2>Act I · The Leak</h2>
+        <p class="act-purpose">The hook and the problem. Cold, drained, and expensive. This clip has 1.5 seconds to stop a thumb, so it opens on motion and a number, not on a face.</p>
+      </div>
+    </div>
+
+    <div class="act-body">
+      <div class="tc">Beats</div>
+      <div class="stack-lg">
+
+        <div class="beats">
+          <div class="beat"><b>00 – 05</b><span>Extreme macro: thick grey-green paint pouring from a punctured five-gallon bucket onto cracked concrete.</span></div>
+          <div class="beat"><b>05 – 10</b><span>Camera pulls back and rises — forty identical leaking buckets in a grid across a blacked-out warehouse, each stenciled with a channel name.</span></div>
+          <div class="beat"><b>10 – 15</b><span>Settles wide. A man stands ankle-deep at the center of the flood, back to camera, not moving.</span></div>
+        </div>
+
+        <dl class="spec">
+          <div><dt>Motion</dt><dd>Super Dolly Out → Crane Up</dd></div>
+          <div><dt>Lens</dt><dd>Macro 85mm → anamorphic 40mm T2</dd></div>
+          <div><dt>Key light</dt><dd>Single sodium-vapor work lamp, hard, overhead</dd></div>
+          <div><dt>Fill</dt><dd>None. Let it crush.</dd></div>
+          <div><dt>Atmos</dt><dd>Heavy haze, god rays, dust motes</dd></div>
+          <div><dt>Grade</dt><dd>Desaturated, teal shadows, no warm</dd></div>
+        </dl>
+
+        <div class="stack-sm">
+          <div class="eyebrow">Voiceover</div>
+          <p class="vo">Every painting company I know is leaking money and calling it marketing. I was paying eight thousand dollars a month in retainers to watch it happen.</p>
+        </div>
+
+        <div class="super"><small>On-screen supers</small>$8,000 A MONTH.<br>TO WATCH IT LEAK.</div>
+
+        <div class="takes">
+          <div class="eyebrow">Batch of 4 — Act I</div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE A</b> &nbsp;<i>The Grid — hero</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Super Dolly Out (hold through full 15s)</div>
+            <pre>Continuous 15-second live-action shot, no cuts. Opens as an extreme macro on a battered five-gallon paint bucket on cracked concrete; a jagged puncture in its side pours thick desaturated grey-green paint in a slow heavy ribbon that pools outward across the floor. The camera pulls back steadily and rises, revealing a vast blacked-out warehouse filled with a grid of forty identical leaking buckets, each stenciled in white paint with a single word — GOOGLE, META, SEO, WEBSITE, LEADS, FOLLOW-UP — all bleeding the same grey into one enormous spreading pool. The move settles into a low wide as a man in a black work jacket stands ankle-deep at the dead center of the flood, back to camera, motionless. Single hard sodium-vapor work light overhead, cold moonlight shafts through clerestory windows, thick volumetric haze with visible god rays, deep crushed blacks with no fill, dust motes drifting. Shot on anamorphic 40mm at T2, 2x horizontal squeeze, blue horizontal lens flares, Kodak Vision3 5219 grain, heavily desaturated cold grade, teal shadows, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE B</b> &nbsp;<i>Face First — safest hook</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Dolly In → Crane Up</div>
+            <pre>Continuous 15-second live-action shot, no cuts. Opens tight on the face of a man in a black work jacket standing in a pitch-black warehouse, lit only by the cold blue glow of a phone screen held below his chin, jaw set, eyes reading something he does not like. The camera pushes in slowly, then drops and pulls back as he lowers the phone, revealing thick grey paint flooding silently past his boots. The pull-back continues into a wide as dozens of punctured five-gallon buckets come into view around him, each stenciled GOOGLE, META, SEO, WEBSITE, all pouring grey into one spreading pool. Hard top light with heavy falloff, cold moonlight through high windows, thick atmospheric haze, deep crushed blacks. Shot on anamorphic 40mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE C</b> &nbsp;<i>Boot Level — most kinetic</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Robo Arm (low tracking) → Crane Up</div>
+            <pre>Continuous 15-second live-action shot, no cuts. The camera glides two inches above a concrete warehouse floor, tracking fast through a spreading flood of thick grey-green paint, passing between and beneath rows of punctured five-gallon buckets whose stenciled labels — GOOGLE, META, SEO, WEBSITE, LEADS — smear past the lens as heavy ribbons of grey pour down into the flood. The camera rises smoothly at the end of the move to find a man in a black work jacket standing ankle-deep at the center of it all, back to camera, perfectly still. Hard overhead sodium work lights in a receding line, cold moonlight shafts, thick volumetric haze, god rays, deep crushed blacks, wet specular highlights on the paint surface. Shot on anamorphic 32mm at T2.8, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE D</b> &nbsp;<i>The Ceiling — atmosphere play</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Crane Down / Set Me Free</div>
+            <pre>Continuous 15-second live-action shot, no cuts. Opens on the dark steel ceiling of an enormous empty warehouse, a single caged work lamp swinging slowly on its cord, shadows sweeping across the rafters. The camera descends steadily through thick haze, past hanging chains and dust, revealing below a floor entirely flooded with thick grey-green paint and ringed by forty punctured five-gallon buckets stenciled GOOGLE, META, SEO, WEBSITE, LEADS, FOLLOW-UP, all bleeding into it. The descent ends in a low wide with a man in a black work jacket standing ankle-deep at the center as a small silhouette. Cold moonlight through clerestory windows, one hard swinging practical, heavy volumetric haze and god rays, deep crushed blacks, no fill. Shot on anamorphic 28mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, teal shadows, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACT II ================= -->
+  <section class="act" id="act-2">
+    <div class="act-head">
+      <div class="tc">00:15 — 00:30</div>
+      <div class="act-title-block">
+        <h2>Act II · The Jump</h2>
+        <p class="act-purpose">The risk and the crash. This is the act that earns the rest — it's the only place you admit it went badly, which is exactly why people believe the number in Act III.</p>
+      </div>
+    </div>
+
+    <div class="act-body">
+      <div class="tc">Beats</div>
+      <div class="stack-lg">
+
+        <div class="beats">
+          <div class="beat"><b>00 – 05</b><span>He turns to camera in the flood. Dolly-zoom — the warehouse stretches violently behind him.</span></div>
+          <div class="beat"><b>05 – 10</b><span>A wall of retainer invoices tears loose and swirls upward around him.</span></div>
+          <div class="beat"><b>10 – 15</b><span>He steps forward through the paper. One amber ember burns through the last sheet — the first color in the film.</span></div>
+        </div>
+
+        <dl class="spec">
+          <div><dt>Motion</dt><dd>Dolly Zoom (Vertigo), push in</dd></div>
+          <div><dt>Lens</dt><dd>50mm → 24mm through the zoom</dd></div>
+          <div><dt>Key light</dt><dd>Hard, low, camera-left, single source</dd></div>
+          <div><dt>Accent</dt><dd>One amber ember — the only warm pixel</dd></div>
+          <div><dt>Atmos</dt><dd>Paper, ash, haze</dd></div>
+          <div><dt>Grade</dt><dd>Still drained. Hold the color back.</dd></div>
+        </dl>
+
+        <div class="stack-sm">
+          <div class="eyebrow">Voiceover</div>
+          <p class="vo">So I fired all of them. And for three weeks it crashed — hard. I thought I'd killed my own business. I held my ground until the last second.</p>
+        </div>
+
+        <div class="super"><small>On-screen supers</small>I FIRED<br>EVERY AGENCY.</div>
+
+        <div class="takes">
+          <div class="eyebrow">Batch of 4 — Act II</div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE A</b> &nbsp;<i>Vertigo — hero</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Dolly Zoom / Vertigo</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket stands ankle-deep in a flooded warehouse and turns slowly to face camera; as he turns, a dolly-zoom stretches the room violently behind him, walls racing away while he stays locked in frame. Behind him a wall of stacked paper invoices tears loose and swirls upward into the dark in a cyclone of paper. He steps forward through the storm toward the lens, and in the final seconds a single ember of orange light burns through the last sheet of paper drifting past his face — the only warm color in the frame. One hard low key light from camera left, deep shadow across the right side of his face, single catchlight, thick volumetric haze, ash and paper in the air, deep crushed blacks. Shot on anamorphic 50mm at T2 pushing to 24mm, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade with one amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE B</b> &nbsp;<i>The Burn — cleanest single image</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Crash Zoom In</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A thick stack of printed agency retainer invoices falls in slow motion into a flooded warehouse floor of grey paint, sheets separating in the air and sinking one by one beneath the surface. The camera crash-zooms in on the final sheet still floating, until it fills the frame; a single ember of orange light ignites at its center and eats outward through the paper in a slow burning ring, the first warm color in the film, its glow reflecting across the grey flood. Hard raking top light, everything else black, thick haze, floating ash, wet specular reflections on the paint. Shot on anamorphic 85mm macro at T1.8, 2x squeeze, warm flare from the ember, Kodak Vision3 5219 grain, desaturated cold grade with a single amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE C</b> &nbsp;<i>Snorricam Walkout</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Snorricam (body-mounted)</div>
+            <pre>Continuous 15-second live-action shot, no cuts. Body-mounted camera locked to the chest of a man in a black work jacket, his face and shoulders held perfectly still in frame while the world whips past behind him. He walks out of a glass-walled marketing office, and behind him every monitor and overhead panel dies one bank at a time, the room collapsing into darkness in his wake. He keeps walking into a black warehouse, the last light falling off until only a hard rim light traces the edge of his jaw. He does not look back. Cold fluorescent office light dying to a single hard rim, thick haze, deep crushed blacks, motion blur in the background only. Shot on anamorphic 24mm at T2.8, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE D</b> &nbsp;<i>The Hold — most emotional</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Super Dolly In (very slow)</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket stands dead center of a vast dark warehouse as a flood of thick grey paint rises steadily around him, past his boots, past his shins, to his knees. He does not move and does not look down; his eyes stay level with the lens. The camera pushes in very slowly the entire time. In the last seconds a single glowing amber ember drifts down from above and lands on the surface of the grey, sending out one perfect expanding ripple. One hard overhead source directly above him, near-total darkness beyond, thick volumetric haze, god rays, deep crushed blacks, wet specular highlights on the rising paint. Shot on anamorphic 40mm at T2, 2x squeeze, blue horizontal flares, Kodak Vision3 5219 grain, desaturated cold grade with one amber accent, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACT III ================= -->
+  <section class="act" id="act-3">
+    <div class="act-head">
+      <div class="tc">00:30 — 00:45</div>
+      <div class="act-title-block">
+        <h2>Act III · The Deploy</h2>
+        <p class="act-purpose">The spectacle. Six agents come online, seal the leaks, and color floods a world that has been grey for thirty seconds. Spend your generation credits here — this is the act people screenshot.</p>
+      </div>
+    </div>
+
+    <div class="act-body">
+      <div class="tc">Beats</div>
+      <div class="stack-lg">
+
+        <div class="beats">
+          <div class="beat"><b>00 – 05</b><span>His palm presses a dark slab. One amber pulse races out along the floor in every direction.</span></div>
+          <div class="beat"><b>05 – 10</b><span>Six columns of liquid light ignite around him in a hexagon and resolve into tall figures made of chrome and wet pigment. Names burn at their feet.</span></div>
+          <div class="beat"><b>10 – 15</b><span>Ribbons of color spiral up his arms and lock into plates of paint armor. Chroma races up the walls like a wave.</span></div>
+        </div>
+
+        <dl class="spec">
+          <div><dt>Motion</dt><dd>360 Orbit, continuous, one revolution</dd></div>
+          <div><dt>Lens</dt><dd>Anamorphic 32mm T2.8</dd></div>
+          <div><dt>Key light</dt><dd>The agents are the light source</dd></div>
+          <div><dt>Core</dt><dd>Blue-white core, amber edge falloff</dd></div>
+          <div><dt>Agents</dt><dd>Google · Meta · SEO · Website · Outreach · Follow-Up</dd></div>
+          <div><dt>Grade</dt><dd>Chroma unlocked. Full saturation lands here.</dd></div>
+        </dl>
+
+        <div class="stack-sm">
+          <div class="eyebrow">Voiceover</div>
+          <p class="vo">Then the agents I built came online. Google. Meta. SEO. The website. Outreach. Follow-up. Forty-seven thousand, nine hundred and fifteen dollars in two days.</p>
+        </div>
+
+        <div class="super"><small>On-screen supers</small>$47,915<br>IN 48 HOURS.</div>
+
+        <div class="takes">
+          <div class="eyebrow">Batch of 4 — Act III</div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE A</b> &nbsp;<i>Ignition &amp; Orbit — hero</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> 360 Orbit (one full revolution over 15s)</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket presses his palm down onto a dark slab in the center of a flooded warehouse; a single amber pulse races outward across the grey surface in every direction. Six towering columns of liquid light ignite around him in a hexagon and resolve into tall humanoid figures built from flowing liquid chrome and wet pigment, each one burning a word into the floor at its feet — GOOGLE, META, SEO, WEBSITE, OUTREACH, FOLLOW-UP. The camera orbits him a full 360 degrees as ribbons of saturated color spiral up his arms and lock into overlapping plates of glossy paint armor. Behind the figures, brilliant chroma floods up the grey walls like a rising wave, saturating the entire warehouse. Blue-white cores with warm amber edge falloff, the figures are the only light source, thick volumetric haze, hard god rays, wet reflections across the floor. Shot on anamorphic 32mm at T2.8, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE B</b> &nbsp;<i>FPV Patch Run — most kinetic</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> FPV Drone</div>
+            <pre>Continuous 15-second live-action shot, no cuts. An FPV drone camera flies at high speed through a vast dark warehouse filled with punctured paint buckets. Six tall humanoid figures made of liquid chrome and wet pigment move bucket to bucket ahead of the camera, sealing each puncture with a single stroke of molten color; the moment a hole is sealed the grey stops and brilliant chroma races up the wall behind it like spilled light. The drone banks hard between them, skims the flooded floor throwing spray, climbs, and bursts out through a high window into open blue sky in the final seconds. Motion blur, whip transitions in-camera, brilliant colored light sources, thick volumetric haze, god rays, wet specular reflections. Shot on anamorphic 14mm at T2.8, 2x squeeze, aggressive horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE C</b> &nbsp;<i>Bullet Time Splash — best single frame</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Bullet Time (180° arc)</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket stands at the center of an enormous explosion of chromatic paint that freezes in mid-air around him — tens of thousands of suspended droplets in every saturated color, each one razor sharp and prismatic, forming a frozen sphere of color that fills the warehouse. The camera arcs 180 degrees through the frozen field in slow bullet-time, threading between the droplets, revealing his face lit from every direction by colored light. In the final three seconds time snaps back to normal speed and the paint crashes outward past the lens in a wall of color. Hard backlight raking through the suspended droplets, prismatic refraction, brilliant saturated color, thick volumetric haze, deep blacks behind the color field. Shot on anamorphic 50mm at T2, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE D</b> &nbsp;<i>Suit Up Macro — the detail shot</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Eyes In / Face Punch, reversed to pull out</div>
+            <pre>Continuous 15-second live-action shot, no cuts. Opens as an extreme macro on a human eye in near darkness; reflected in the iris, six columns of colored light ignite in sequence. The camera pulls back steadily and rotates, revealing a man in a black work jacket in a dark warehouse as ribbons of liquid saturated paint spiral up his forearm, wrap his shoulder and harden into overlapping plates of glossy armor, dry pigment sparking off each plate as it locks. The pull-back ends on a low three-quarter portrait as brilliant chroma floods up the grey wall behind him. Colored light sources only, hard rim light, thick volumetric haze, sparks of dry pigment in the air, wet specular highlights on the armor. Shot on anamorphic 85mm macro at T1.8 pulling to 35mm, 2x squeeze, brilliant horizontal flares, Kodak Vision3 5219 grain, rich fully saturated grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACT IV ================= -->
+  <section class="act" id="act-4">
+    <div class="act-head">
+      <div class="tc">00:45 — 01:00</div>
+      <div class="act-title-block">
+        <h2>Act IV · The Offer</h2>
+        <p class="act-purpose">Drop the spectacle and be a person. After 45 seconds of scale, a plain, real, well-lit human face is the most persuasive image you have left. Do not stylize this one.</p>
+      </div>
+    </div>
+
+    <div class="act-body">
+      <div class="tc">Beats</div>
+      <div class="stack-lg">
+
+        <div class="beats">
+          <div class="beat"><b>00 – 05</b><span>Wide: the warehouse fully alive, walls flowing with color, every bucket full and glowing. He walks toward camera.</span></div>
+          <div class="beat"><b>05 – 11</b><span>Slow push to a tight, natural, un-stylized portrait. He speaks directly to lens. A revenue line climbs softly behind him.</span></div>
+          <div class="beat"><b>11 – 15</b><span>He lifts a full bucket of glowing color toward camera until it fills frame. Cut to end card.</span></div>
+        </div>
+
+        <dl class="spec">
+          <div><dt>Motion</dt><dd>Slow Dolly In, ending static</dd></div>
+          <div><dt>Lens</dt><dd>85mm T1.4 — spherical, not anamorphic</dd></div>
+          <div><dt>Key light</dt><dd>Soft, 45°, large source — interview look</dd></div>
+          <div><dt>Back</dt><dd>Hair light + warm practical bokeh</dd></div>
+          <div><dt>Grade</dt><dd>Full color, natural skin. No stylization.</dd></div>
+          <div><dt>End card</dt><dd>3s hold, black, single line + CTA</dd></div>
+        </dl>
+
+        <div class="stack-sm">
+          <div class="eyebrow">Voiceover</div>
+          <p class="vo">A hundred and twenty-four thousand month to date. I'm not a coach who watched a ChatGPT video — I built a software company with this. Now I'll build your agents. Send me a message. Scared money doesn't make money.</p>
+        </div>
+
+        <div class="super"><small>End card</small>I'LL BUILD YOUR<br>AI AGENTS FOR YOU.<br><span style="font-family:var(--mono);font-size:.42em;letter-spacing:.16em;display:block;margin-top:1rem;color:var(--dim)">DM "AGENT" TO BOOK A CALL</span></div>
+
+        <div class="takes">
+          <div class="eyebrow">Batch of 4 — Act IV</div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE A</b> &nbsp;<i>The Turn — hero</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Super Dolly In (slow, settling static)</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A vast warehouse now fully alive with saturated color — walls flowing with wet chromatic paint, rows of five-gallon buckets full and glowing from within, the floor mirror-wet and reflecting all of it. A man in a black work jacket walks unhurried out of the color directly toward the lens. The camera pushes in slowly and settles into a tight, natural, un-stylized portrait as he stops and speaks directly to camera, relaxed and certain. Behind him, far out of focus, a softly glowing revenue line climbs upward through warm bokeh. Large soft key at 45 degrees camera left, gentle fill, a clean hair light separating him from the background, warm practical bokeh, natural skin tones, no haze on the face. Shot on spherical 85mm at T1.4, very shallow depth of field, subtle film grain, rich natural color grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE B</b> &nbsp;<i>The Crate — the product beat</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Lazy Susan / Product Orbit</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A wooden shipping crate lands on a black seamless tabletop and its lid lifts away on its own. Inside, nested in cut black foam, sits a compact computer and hardware setup glowing softly from within, cables coiled with precision, and a single printed card resting on top reading PROGRAMMED. READY. YOURS. The camera orbits the crate slowly through a full revolution, raking hard specular light across the machined surfaces and the foam edges. In the final seconds a hand enters frame and lifts the card. Hard directional key with a large soft top bounce, deep black seamless background, controlled specular highlights, a faint warm glow from inside the machine, no haze. Shot on spherical 50mm macro at T4, tabletop product lighting, subtle film grain, rich natural color grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE C</b> &nbsp;<i>Handoff — strongest metaphor close</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Robo Arm (arc in, rack focus)</div>
+            <pre>Continuous 15-second live-action shot, no cuts. In a warehouse saturated with color, a man in a black work jacket lifts a five-gallon bucket filled to the brim with glowing, luminous chromatic paint and extends it slowly toward the lens until the open bucket nearly fills the frame, light from inside it washing up across his face and the walls. The camera arcs in as he offers it, and focus racks from his eyes down to the handle in his hand in the final seconds. Warm key from the bucket itself acting as a practical source, soft ambient fill from the colored walls, clean hair light, wet specular reflections on the floor, natural skin tones. Shot on spherical 50mm at T2, shallow depth of field, subtle film grain, rich saturated natural color grade, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+
+          <div class="take">
+            <div class="take-head">
+              <span class="take-id"><b>TAKE D</b> &nbsp;<i>Walk to Black — cleanest end-card runway</i></span>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="motion"><b>Camera preset:</b> Static hold with slow drift back</div>
+            <pre>Continuous 15-second live-action shot, no cuts. A man in a black work jacket walks away from camera out of a fully saturated warehouse of flowing color and into pure darkness; as he passes, the color drains from the frame behind him in a slow wave until only one tall lit doorway remains, glowing warm at the far end of the black. He stops, turns back over his shoulder toward the lens for two seconds, then continues through the door. The frame is left in near-total black with a single warm rectangle of light and wide empty negative space at the bottom third of the frame. Hard backlight through the doorway, deep crushed blacks, thick volumetric haze catching the door light, silhouette rim only. Shot on anamorphic 40mm at T2, 2x squeeze, warm horizontal flare, Kodak Vision3 5219 grain, photoreal cinematic live-action, 9:16 vertical.</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POST ================= -->
+  <section>
+    <hr class="rule">
+    <div class="sec-head" style="padding-top:1.4rem"><h2>Sound &amp; post</h2></div>
+
+    <div class="stack-lg">
+      <div class="cards">
+        <div class="card">
+          <h3>Sound design</h3>
+          <p><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT I</b> — sub drone at 40Hz, thick liquid pour, distant warehouse room tone. No music yet. Silence is the hook.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT II</b> — paper storm, one reverse riser building the whole act, everything drops out for a half-second before the ember.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT III</b> — the drop lands exactly on the palm press. Six ignition hits, one per agent. Big low-end.<br><br><b style="font-family:var(--mono);font-size:.78em;letter-spacing:.1em">ACT IV</b> — music pulls back to a single sustained pad so his voice sits on top. Never talk over a drop.</p>
+        </div>
+        <div class="card">
+          <h3>Cutting four clips into sixty seconds</h3>
+          <p>Each act ends on a held frame and the next begins on movement, so straight cuts work — no transitions, no dissolves, no whip wipes. The only exception is Act II into Act III: hard cut to two frames of black on the ember, then the palm press. That black is the whole edit's punctuation.<br><br>If a generation drifts in the last two seconds, trim it and let the act run 13 seconds. A 56-second film is fine. A morphing face is not.</p>
+        </div>
+        <div class="card">
+          <h3>Text treatment</h3>
+          <p>Never burn text into the generation — it comes out garbled. Add supers in post. Condensed uppercase, bottom third, appearing on a beat and cutting out hard rather than fading. Two lines maximum. Every number gets its own screen.</p>
+        </div>
+        <div class="card">
+          <h3>The thumbnail</h3>
+          <p>Pull it from Act III Take C — him at the center of the frozen color explosion. That single frame is the most arresting image in the film and it works at 40 pixels wide in a feed, which is the only size that matters.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="eyebrow">One caution before you post</div>
+        <p>The $47,915 and $124,000 are your real numbers and they're the strongest thing in this — but the second you put revenue on screen you invite screenshots. Make sure you're comfortable with those figures living publicly and permanently, because they will. If you'd rather not, Act III still lands hard on "six agents, one weekend" with no dollar figure at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CAPTION ================= -->
+  <section>
+    <hr class="rule">
+    <div class="sec-head" style="padding-top:1.4rem"><h2>The caption</h2></div>
+
+    <div class="stack-lg">
+      <p class="lede">Your draft is genuinely good — the risk story is the strongest part and most coaches don't have one. This is the same thing tightened, with the hook pulled to the top and the offer moved down where it belongs.</p>
+
+      <div class="caption-box">
+        <p><b>Take the jump. Take as much risk as it takes.</b> That's what this week taught me.</p>
+        <p>There's no secret. I'm not a guy who learned to prompt ChatGPT and started calling himself an AI coach. I built an entire SaaS company with AI. I automated my client outreach with it. And this month I put autonomous AI agents in charge of my whole marketing pipeline — Google, Meta, the website, SEO, all of it.</p>
+        <p>A month ago I fired every marketing agency I had. Killed the retainers. Roughly $8,000 a month that used to buy me reports now goes straight into ad spend.</p>
+        <p>For the first few weeks it crashed. Hard. I thought I'd made a $100,000 mistake and I held my ground anyway.</p>
+        <p>This weekend, from my AI channels alone, my business did <b>$47,915 in two days.</b> Month to date we're at about $124,000 — and that's a weak month for us. It's ramping.</p>
+        <p>Scared money doesn't make money.</p>
+        <p>So here's what I'm launching. I'll build your AI agents for you — marketing, follow-up, lead nurture, your website, your landing pages. The works.</p>
+        <div class="num-list">
+          <p>1 — I buy the equipment, set it up, install the agents, and program the whole system for your business.</p>
+          <p>2 — It ships to your door overnight, ready to run.</p>
+          <p>3 — Four weeks of weekly one-on-one coaching.</p>
+          <p>4 — Weekly group call.</p>
+          <p>5 — Option to keep going after four weeks, with me updating your agents personally by remote access.</p>
+        </div>
+        <p>Stop learning AI from people who only know how to use ChatGPT.</p>
+        <p><b>Comment "AGENT" or send me a DM and we'll get on a call.</b></p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Why "comment AGENT" beats "send me a DM"</h3>
+          <p>Comments feed the algorithm, DMs don't. Ask for the comment publicly, then DM everyone who leaves one. You get the reach and the conversation. Put the DM ask in the video's end card and the comment ask in the caption so they're not competing.</p>
+        </div>
+        <div class="card">
+          <h3>Program names, if you want one</h3>
+          <p>The film is called The Leak, but the program needs its own name. These all survive being said out loud on a call:</p>
+          <div class="names">
+            <span>Agent Zero</span>
+            <span>The Build</span>
+            <span>Operator</span>
+            <span>Full Coverage</span>
+            <span>Second Coat</span>
+          </div>
+          <p style="margin-top:.4rem">Second Coat is the one — it's a painting term, it means the pass that actually finishes the job, and it belongs to you in a way none of the generic AI names do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>The Leak · Launch Film Treatment v1</span>
+    <span>4 acts · 16 prompts · 60 seconds</span>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var block = btn.closest(".take");
+      var pre = block ? block.querySelector("pre") : null;
+      if (!pre) return;
+      var text = pre.textContent.trim();
+
+      var done = function () {
+        var original = "Copy";
+        btn.textContent = "Copied";
+        btn.setAttribute("data-done", "1");
+        setTimeout(function () {
+          btn.textContent = original;
+          btn.removeAttribute("data-done");
+        }, 1600);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else {
+        fallback(text, done);
+      }
+    });
+  });
+
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "absolute";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) { /* no-op */ }
+    document.body.removeChild(ta);
+  }
+</script>
+
+</body>
+</html>
